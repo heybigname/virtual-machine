@@ -11,12 +11,19 @@
     timezone: America/New_York
     writeable_dirs:
       - app/storage/cache
+    # nodejs
+    repo_basedir: ..
+    node_version: "0.10.12"
+    node_prefix: "node-v${node_version}"
+    node_tarball: "${node_prefix}.tar.gz"
+    node_path: "/usr/local"
   tasks:
     - include: tasks/common.yml
     - include: tasks/development.yml
     - include: tasks/host.yml
     - include: tasks/app.yml
-
+    - include: tasks/rubycrap.yml
+    - include: tasks/nodejs.yml
   handlers:
     - name: restart apache
       service: name=apache2 state=restarted

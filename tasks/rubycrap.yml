@@ -1,0 +1,11 @@
+---
+# I hate Ruby's ecosystem with a passion
+
+- name: install rvm
+  shell: "curl -sSL https://get.rvm.io | bash"
+  sudo_user: vagrant
+
+- name: install ruby
+  shell: "rvm install 2.1.2"
+  environment: env_vars
+  sudo_user: vagrant

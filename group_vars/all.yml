@@ -1,0 +1,2 @@
+env_vars:
+  PATH: /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/opt/vagrant_ruby/bin:/home/vagrant/.rvm/bin

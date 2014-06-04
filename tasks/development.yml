@@ -83,5 +83,9 @@
 
 # PHP Tools
 
+- stat: path=/usr/local/bin/composer
+  register: composer_folder
+
 - name: Composer
   shell: curl -sS https://getcomposer.org/installer | php && mv composer.phar /usr/local/bin/composer creates=/usr/local/bin/composer
+  when: composer_folder.stat.isdir is not defined

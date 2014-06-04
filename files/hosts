@@ -1,5 +1,5 @@
 127.0.0.1	localhost
-127.0.1.1	precise32
+127.0.1.1	precise64
 127.0.0.1	app.local test.local content.local app.dev test.dev content.dev
 
 # The following lines are desirable for IPv6 capable hosts
