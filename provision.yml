@@ -4,7 +4,8 @@
   vars:
     root_folder: /var/www/app
     document_root: "{{ root_folder }}/public"
-    dbname: development
+    databases:
+      - development
     dbuser: root
     dbpasswd: password
     timezone: America/New_York
