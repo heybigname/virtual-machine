@@ -1,9 +1,9 @@
 ---
 - name: Apache | Copy Host Config
-  template: src=../files/laravel.conf dest=/etc/apache2/sites-available/laravel.conf
+  template: src=../files/app.conf dest=/etc/apache2/sites-available/app.conf
 
 - name: Apache | Enable Host Config
-  command: a2ensite laravel.conf
+  command: a2ensite app.conf
   notify: restart apache
 
 - name: Apache | Disable Default Host Config
