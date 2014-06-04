@@ -1,0 +1,8 @@
+---
+
+- name: App | Setting Folder Permissions
+  command: chmod -R 755 {{ root_folder }}/{{ item }}
+  with_items: writeable_dirs
+
+- name: App | Composer install
+  command: composer install chdir={{ root_folder }}
