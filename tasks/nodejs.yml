@@ -31,7 +31,7 @@
   when: wanted_version_installed.rc == 1
 
 - name: Node.js | Make
-  shell: /usr/bin/make chdir=/tmp/{{ node_prefix }}/
+  shell: /usr/bin/make -j 4 chdir=/tmp/{{ node_prefix }}/
   when: wanted_version_installed.rc == 1
 
 - name: Node.js | Make install
