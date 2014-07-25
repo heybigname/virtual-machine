@@ -2,6 +2,9 @@
 # Development related tasks
 
 # Apache
+- name: Apache 2.4 custom repo
+  apt_repository: repo='ppa:ondrej/apache2' update_cache=yes
+
 - name: Apache
   apt: pkg=apache2 state=installed
 
