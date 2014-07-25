@@ -10,6 +10,9 @@
 #   - node_tarball = The tarball filename at nodejs.org
 #   - node_version = The wanted version of node to be installed
 
+- name: Compile Tools
+  apt: pkg=build-essential state=installed
+
 - name: Node.js | Checking installed version of node.js
   shell: /usr/bin/test "$(node -v 2> /dev/null)" = v{{ node_version }}
   register: wanted_version_installed
