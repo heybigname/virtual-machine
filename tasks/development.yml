@@ -9,7 +9,7 @@
   apt: pkg=apache2 state=installed
 
 - name: Apache Modules
-  command: a2enmod $item
+  command: a2enmod {{ item }}
   notify: restart apache
   with_items:
     - rewrite
@@ -44,14 +44,15 @@
   notify: restart mysql
 
 - name: MySQL | Create App DB
-  mysql_db: name={{ dbname }} state=present login_password={{ dbpasswd }} login_user={{ dbuser }}
+  mysql_db: name={{ item }} state=present login_password={{ dbpasswd }} login_user={{ dbuser }}
+  with_items: databases
 
 # PHP
 - name: PHP 5.5 Custom Repo
   apt_repository: repo='ppa:ondrej/php5' update_cache=yes
 
 - name: PHP and Modules
-  apt: pkg=$item state=latest
+  apt: pkg={{ item }} state=latest
   notify: restart apache
   tags: common
   with_items:
@@ -85,5 +86,9 @@
 
 # PHP Tools
 
+- stat: path=/usr/local/bin/composer
+  register: composer_folder
+
 - name: Composer
   shell: curl -sS https://getcomposer.org/installer | php && mv composer.phar /usr/local/bin/composer creates=/usr/local/bin/composer
+  when: composer_folder.stat.isdir is not defined
