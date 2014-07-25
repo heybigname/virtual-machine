@@ -4,8 +4,6 @@
   vars:
     root_folder: /var/www/app
     document_root: "{{ root_folder }}/public"
-    databases:
-      - development
     dbuser: root
     dbpasswd: password
     timezone: America/New_York
@@ -22,7 +20,6 @@
     - include: tasks/development.yml
     - include: tasks/host.yml
     - include: tasks/app.yml
-    - include: tasks/rubycrap.yml
     - include: tasks/nodejs.yml
   handlers:
     - name: restart apache

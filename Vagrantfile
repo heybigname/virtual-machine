@@ -7,7 +7,7 @@ Vagrant.configure("2") do |config|
 	config.vm.provider :virtualbox do |v|
 		v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
 		v.customize ["modifyvm", :id, "--memory", 512]
-		v.customize ["modifyvm", :id, "--name", "occur-vm"]
+		v.customize ["modifyvm", :id, "--name", "CHANGEME"]
 	end
 
 	config.vm.synced_folder "./", "/var/www/app", id: "vagrant-root", :owner => "www-data"
