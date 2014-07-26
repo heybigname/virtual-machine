@@ -1,28 +1,20 @@
 ---
 - hosts: all
   sudo: true
-  vars:
-    root_folder: /var/www/app
-    document_root: "{{ root_folder }}/public"
-    dbuser: root
-    dbpasswd: password
-    timezone: America/New_York
-    writeable_dirs:
-      - app/storage/cache
-    # nodejs
-    repo_basedir: ..
-    node_version: "0.10.12"
-    node_prefix: "node-v${node_version}"
-    node_tarball: "${node_prefix}.tar.gz"
-    node_path: "/usr/local"
+#  vars:
+#    # nodejs
+#    repo_basedir: ..
+#    node_version: "0.10.12"
+#    node_prefix: "node-v${node_version}"
+#    node_tarball: "${node_prefix}.tar.gz"
+#    node_path: "/usr/local"
   tasks:
-    - include: tasks/common.yml
-    - include: tasks/development.yml
-    - include: tasks/host.yml
-    - include: tasks/app.yml
-    - include: tasks/nodejs.yml
+    - include: tasks/ubuntu.yml
+    - include: tasks/database.yml
+    - include: tasks/web.yml
+    #- include: tasks/nodejs.yml
   handlers:
-    - name: restart apache
-      service: name=apache2 state=restarted
+    - name: restart nginx
+      service: name=nginx state=restarted
     - name: restart mysql
       service: name=mysql state=restarted

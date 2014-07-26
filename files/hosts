@@ -1,6 +1,9 @@
 127.0.0.1	localhost
-127.0.1.1	precise64
-127.0.0.1	app.local test.local content.local app.dev test.dev content.dev
+127.0.1.1	trusty64
+
+{% for host in sites %}
+127.0.0.1   {{ host.hostname }}
+{% endfor %}
 
 # The following lines are desirable for IPv6 capable hosts
 ::1     ip6-localhost ip6-loopback
