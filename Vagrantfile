@@ -22,10 +22,10 @@ Vagrant.configure("2") do |config|
             sites: [
                 {
                     hostname: "app.local",
-                    document_root: "/vagrant/public"
+                    document_root: "/vagrant/site/public"
                 }, {
                     hostname: "app2.local",
-                    document_root: "/vagrant/public2"
+                    document_root: "/vagrant/site2/public2"
                 }
             ],
             install_javascript_build_system: "no"
