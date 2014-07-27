@@ -29,6 +29,7 @@ Vagrant.configure("2") do |config|
                     document_root: "/vagrant/public2",
                 },
             ],
+            install_javascript_build_system: "yes"
         }
     end
 end

@@ -1,18 +1,12 @@
 ---
 - hosts: all
   sudo: true
-#  vars:
-#    # nodejs
-#    repo_basedir: ..
-#    node_version: "0.10.12"
-#    node_prefix: "node-v${node_version}"
-#    node_tarball: "${node_prefix}.tar.gz"
-#    node_path: "/usr/local"
   tasks:
     - include: tasks/ubuntu.yml
     - include: tasks/database.yml
     - include: tasks/web.yml
-    #- include: tasks/nodejs.yml
+    - include: tasks/nodejs.yml
+      when: install_javascript_build_system == "yes"
   handlers:
     - name: restart nginx
       service: name=nginx state=restarted
