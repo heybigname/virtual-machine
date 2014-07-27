@@ -1,5 +1,4 @@
 ---
-
 # Update Apt Repository
 
 - name: Commmon | Update repository
