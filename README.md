@@ -5,7 +5,6 @@ Ansible VM
 - NGINX + PHP5-FPM
 - PHP 5.5
 - NodeJS v0.10.29
-
 - Automatic NGINX Site Configuration
 - Automatic Database Configuration
 
