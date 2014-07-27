@@ -3,7 +3,7 @@
   sudo: true
   tasks:
     - include: tasks/system.yml
-    - include: tasks/database.yml
+    - include: tasks/mysql.yml
     - include: tasks/web.yml
     - include: tasks/nodejs.yml
       when: install_javascript_build_system == "yes"
