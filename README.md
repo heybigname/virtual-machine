@@ -10,8 +10,7 @@ Ansible VM
 
 # Usage
 
-1. Bring this repo into your project as the ansible/ folder in the root
-    - you could just copy it there or add it as a submodule: `git submodule add git@github.com:heybigname/ansible.git`
+1. Bring this repo into your project as the ansible/ folder in the root. You could just copy it there or add it as a submodule: `git submodule add git@github.com:heybigname/ansible.git`
 2. Copy the Vagrantfile into your application root
 3. Modify your Vagrantfile
     - set the name for the box (the part that says CHANGE ME)
