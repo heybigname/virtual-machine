@@ -11,6 +11,8 @@ Ansible VM
 # Usage
 
 1. Copy the Vagrantfile into your application root
-2. Modify your Vagrantfile and set the name for the box (the part that says CHANGE ME)
+2. Modify your Vagrantfile
+    - set the name for the box (the part that says CHANGE ME)
+    - configure your hostname, database details, site details, etc
 3. Install Vagrant, VirtualBox, and Ansible.
 4. Just run `vagrant up`
