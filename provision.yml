@@ -2,7 +2,7 @@
 - hosts: all
   sudo: true
   tasks:
-    - include: tasks/ubuntu.yml
+    - include: tasks/system.yml
     - include: tasks/database.yml
     - include: tasks/web.yml
     - include: tasks/nodejs.yml

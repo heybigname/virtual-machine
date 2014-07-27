@@ -17,19 +17,20 @@ Vagrant.configure("2") do |config|
     config.vm.provision "ansible" do |ansible|
         ansible.playbook = "ansible/provision.yml"
         ansible.extra_vars = {
+            hostname: "dev",
             dbuser: "root",
             dbpasswd: "password",
             databases: ["development"],
             sites: [
                 {
                     hostname: "app.local",
-                    document_root: "/vagrant/public",
+                    document_root: "/vagrant/public"
                 }, {
                     hostname: "app2.local",
-                    document_root: "/vagrant/public2",
-                },
+                    document_root: "/vagrant/public2"
+                }
             ],
-            install_javascript_build_system: "yes"
+            install_javascript_build_system: "no"
         }
     end
 end
