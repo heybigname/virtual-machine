@@ -17,10 +17,17 @@
     - php5-intl
     - php5-memcached
 
-# PHP-FPM
+# PHP5-FPM
 
-- name: PHP-FPM
+- name: PHP5-FPM
   apt: pkg=php5-fpm state=installed
+
+- name: PHP5-FPM | Copy Primary Config
+  template: src=../files/php-fpm.conf dest=/etc/php5/fpm/php-fpm.conf
+
+- name: PHP5-FPM | Copy WWW Pool Config
+  template: src=../files/php-fpm_pool_www.conf dest=/etc/php5/fpm/pool.d/www.conf
+  notify: restart php5-fpm
 
 # NGINX
 
@@ -30,6 +37,9 @@
 - name: NGINX | Copy Host Config
   template: src=../files/nginx_site.conf dest=/etc/nginx/sites-available/{{ item.hostname }}.conf
   with_items: sites
+
+- name: NGINX | Copy Server Config
+  template: src=../files/nginx.conf dest=/etc/nginx/nginx.conf
 
 - name: Remove Default Configuration
   file: path=/etc/nginx/sites-enabled/default state=absent
