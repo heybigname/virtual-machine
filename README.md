@@ -4,7 +4,7 @@ Ansible VM
 - Ubuntu 14.04 Trusty 64bit
 - NGINX + PHP5-FPM
 - PHP 5.5
-- NodeJS v0.10.29
+- NodeJS v0.10.29 (optional)
 - Automatic NGINX Site Configuration
 - Automatic Database Configuration
 
