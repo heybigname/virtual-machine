@@ -6,3 +6,4 @@
 
 - name: Node.js
   apt: pkg=nodejs state=latest
+
