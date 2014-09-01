@@ -1,9 +1,6 @@
 ---
 # PHP
 
-- name: PHP 5.5 Custom Repo
-  apt_repository: repo='ppa:ondrej/php5' update_cache=yes
-
 - name: PHP and Modules
   apt: pkg={{ item }} state=latest
   tags: common
