@@ -1,12 +1,21 @@
 ---
 - hosts: all
   sudo: true
+  vars:
+    install_db: "yes"
+    install_web: "yes"
+    install_mailcatcher: "yes"
+    install_javascript_build_system: "yes"
   tasks:
     - include: tasks/system.yml
     - include: tasks/mysql.yml
+      when: install_db == "yes"
     - include: tasks/php.yml
+      when: install_web == "yes"
     - include: tasks/php-fpm.yml
+      when: install_web == "yes"
     - include: tasks/nginx.yml
+      when: install_web == "yes"
     - include: tasks/mailcatcher.yml
       when: install_mailcatcher == "yes"
     - include: tasks/nodejs.yml
