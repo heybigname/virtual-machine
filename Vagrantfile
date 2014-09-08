@@ -28,7 +28,8 @@ Vagrant.configure("2") do |config|
                     document_root: "/vagrant/site2/public2"
                 }
             ],
-            install_javascript_build_system: "no"
+            install_javascript_build_system: "no",
+            install_mailcatcher: "yes"
         }
     end
 end

@@ -1,38 +1,41 @@
 ---
 # Update Apt Repository
 
-- name: Commmon | Update repository
+- name: System | Update repository
   apt: update_cache=yes
 
 # Python Requirements
 
-- name: Commmon | python-software-properties
+- name: System | Install python-software-properties
   apt: pkg=python-software-properties state=installed
+
+- name: System | Install Build-Essentials
+  apt: pkg=build-essential state=installed
 
 # ACL - for easy access control management
 
-- name: Common | ACL
+- name: System | Install ACL
   apt: pkg=acl state=installed
 
 # cURL
 
-- name: Common | cURL
+- name: System | Install cURL
   apt: pkg=curl state=installed
 
 # Git
 
-- name: Common | Install Git
+- name: System | Install Git
   apt: pkg=git-core state=installed
 
 # Host Configuration
 
-- name: Common | Set the hostname /etc/hostname
+- name: System | Set the hostname /etc/hostname
   shell: echo {{ hostname }} > /etc/hostname
   when: hostname is defined
 
-- name: Set the hostname
+- name: System | Set the hostname
   shell: hostname {{ hostname }}
   when: hostname is defined
 
-- name: Copy the hosts file into place
+- name: System | Copy the hosts file into place
   template: src=../files/hosts dest=/etc/hosts mode=0600

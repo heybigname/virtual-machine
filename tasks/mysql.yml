@@ -1,10 +1,10 @@
 ---
 # MySQL
 
-- name: MySQL
+- name: MySQL | Install MySQL
   apt: pkg=mysql-server state=installed
 
-- name: MySQL
+- name: MySQL | Install python-mysqldb
   apt: pkg=python-mysqldb state=installed
 
 - name: MySQL | Create User

@@ -1,0 +1,27 @@
+---
+# PHP
+
+- name: PHP | Install 5.5 PPA
+  apt_repository: repo='ppa:ondrej/php5' update_cache=yes
+  
+- name: PHP | Install PHP and Modules
+  apt: pkg={{ item }} state=latest
+  tags: common
+  with_items:
+    - php5
+    - php5-mysql
+    - php5-gd
+    - php-apc
+    - php5-mcrypt
+    - php5-curl
+    - php5-intl
+    - php5-memcached
+
+# Composer
+
+- stat: path=/usr/local/bin/composer
+  register: composer_folder
+
+- name: PHP | Install Composer
+  shell: curl -sS https://getcomposer.org/installer | php && mv composer.phar /usr/local/bin/composer creates=/usr/local/bin/composer
+  when: composer_folder.stat.isdir is not defined

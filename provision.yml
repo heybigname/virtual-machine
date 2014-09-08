@@ -4,7 +4,11 @@
   tasks:
     - include: tasks/system.yml
     - include: tasks/mysql.yml
-    - include: tasks/web.yml
+    - include: tasks/php.yml
+    - include: tasks/php-fpm.yml
+    - include: tasks/nginx.yml
+    - include: tasks/mailcatcher.yml
+      when: install_mailcatcher == "yes"
     - include: tasks/nodejs.yml
       when: install_javascript_build_system == "yes"
   handlers:
