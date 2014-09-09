@@ -16,6 +16,8 @@
       when: install_web == "yes"
     - include: tasks/nginx.yml
       when: install_web == "yes"
+    - include: tasks/hhvm.yml
+      when: install_hhvm == "yes"
     - include: tasks/mailcatcher.yml
       when: install_mailcatcher == "yes"
     - include: tasks/nodejs.yml

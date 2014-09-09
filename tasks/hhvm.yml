@@ -1,0 +1,8 @@
+---
+# HHVM
+
+- name: HHVM | Install HHVM Repository
+  apt_repository: repo='deb http://dl.hhvm.com/ubuntu trusty main' state=present update_cache=yes
+
+- name: HHVM | Install HHVM
+  apt: pkg=hhvm state=latest force=yes

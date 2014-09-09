@@ -31,6 +31,7 @@ Vagrant.configure("2") do |config|
             install_db: "yes",
             install_web: "yes",
             install_mailcatcher: "yes",
+            install_hhvm: "no",
             install_javascript_build_system: "no"
         }
     end

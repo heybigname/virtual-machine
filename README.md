@@ -6,6 +6,7 @@ Ansible VM 1.0
 - PHP 5.5
 - NodeJS v0.10.29 (optional)
 - MailCatcher (optional)
+- HHVM (optional)
 - Automatic NGINX Site Configuration
 - Automatic Database Configuration
 
