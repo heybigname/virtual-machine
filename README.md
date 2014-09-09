@@ -1,4 +1,4 @@
-Ansible VM 1.0
+Ansible VM 1.1
 ==============
 
 - Ubuntu 14.04 Trusty 64bit
