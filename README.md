@@ -2,13 +2,13 @@ Ansible VM 1.1
 ==============
 
 - Ubuntu 14.04 Trusty 64bit
-- NGINX + PHP5-FPM
-- PHP 5.5
+- NGINX + PHP5-FPM (optional)
+- PHP 5.5 (optional)
 - NodeJS v0.10.29 (optional)
 - MailCatcher (optional)
 - HHVM (optional)
-- Automatic NGINX Site Configuration
-- Automatic Database Configuration
+- Site configuration defined in the Vagrantfile
+- Database configuration defined in the Vagrantfile
 
 # Usage
 
