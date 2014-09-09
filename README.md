@@ -2,11 +2,11 @@ Ansible VM 1.1
 ==============
 
 - [Ubuntu](http://www.ubuntu.com/) 14.04 Trusty 64bit
-- [NGINX](http://nginx.org/) + [PHP5-FPM](http://php-fpm.org/) (optional)
-- [PHP](http://php.net/) 5.5 (optional)
-- [NodeJS](http://nodejs.org/) v0.10.29 (optional)
-- [MailCatcher](http://mailcatcher.me/) (optional)
-- [HHVM](http://hhvm.com/) (optional)
+- [NGINX](http://nginx.org/) + [PHP5-FPM](http://php-fpm.org/) _(optional)_
+- [PHP](http://php.net/) 5.5 _(optional)_
+- [NodeJS](http://nodejs.org/) v0.10.29 _(optional)_
+- [MailCatcher](http://mailcatcher.me/) _(optional)_
+- [HHVM](http://hhvm.com/) _(optional)_
 - Site configuration defined in the [Vagrantfile](https://github.com/heybigname/ansible/blob/master/Vagrantfile)
 - Database configuration defined in the [Vagrantfile](https://github.com/heybigname/ansible/blob/master/Vagrantfile)
 
