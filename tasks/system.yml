@@ -36,6 +36,3 @@
 - name: System | Set the hostname
   shell: hostname {{ hostname }}
   when: hostname is defined
-
-- name: System | Copy the hosts file into place
-  template: src=../files/hosts dest=/etc/hosts mode=0600
