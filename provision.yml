@@ -8,6 +8,8 @@
     install_javascript_build_system: "yes"
   tasks:
     - include: tasks/system.yml
+    - include: tasks/ohmyzsh.yml
+      when: install_ohmyzsh == "yes"
     - include: tasks/mysql.yml
       when: install_db == "yes"
     - include: tasks/php.yml

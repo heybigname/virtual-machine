@@ -1,4 +1,4 @@
-Ansible VM 1.1
+Ansible VM 1.2
 ==============
 
 - [Ubuntu](http://www.ubuntu.com/) 14.04 Trusty 64bit
@@ -19,3 +19,11 @@ Ansible VM 1.1
     - configure your hostname, database details, site details, etc
 4. Install [Vagrant](http://vagrantup.com), [VirtualBox](https://www.virtualbox.org/), and [Ansible](http://www.ansible.com/home).
 5. Just run `vagrant up`
+
+
+Changelog
+=========
+
+**1.2**
+
+Added oh-my-zsh configuration (got tired of bash...)

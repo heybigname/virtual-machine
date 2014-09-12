@@ -29,6 +29,7 @@ Vagrant.configure("2") do |config|
                 }
             ],
             install_db: "yes",
+            install_ohmyzsh: "yes",
             install_web: "yes",
             install_mailcatcher: "yes",
             install_hhvm: "no",

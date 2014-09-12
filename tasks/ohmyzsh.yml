@@ -1,0 +1,21 @@
+---
+# oh-my-zsh
+
+- name: oh-my-zsh | Install oh-my-zsh
+  apt: name={{ item }}  state=latest update_cache=yes
+  with_items:
+   - git
+   - zsh
+   - git-core
+
+- name: oh-my-zsh | Clone down repository
+  git: repo=https://github.com/robbyrussell/oh-my-zsh.git dest=/home/vagrant/.oh-my-zsh
+
+- name: oh-my-zsh | Remove standard .zshrc
+  file: path=/home/vagrant/.zshrc state=absent
+
+- name: oh-my-zsh | Deploy new .zshrc
+  template: src=files/zshrc.in dest=/home/vagrant/.zshrc owner=vagrant
+
+- name: oh-my-zsh | Set zsh as default shell
+  user: name=vagrant shell=/bin/zsh
