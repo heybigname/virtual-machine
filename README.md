@@ -18,7 +18,7 @@ Ansible VM 1.2
     - set the name for the box (the part that says CHANGE ME)
     - configure your hostname, database details, site details, etc
 4. Install [Vagrant](http://vagrantup.com), [VirtualBox](https://www.virtualbox.org/), and [Ansible](http://www.ansible.com/home).
-5. Just run `vagrant up`
+5. Just run `vagrant up`t
 
 
 Changelog
