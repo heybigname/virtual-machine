@@ -1,4 +1,4 @@
-Ansible VM 1.2
+Ansible VM 1.3
 ==============
 
 - [Ubuntu](http://www.ubuntu.com/) 14.04 Trusty 64bit
@@ -23,6 +23,10 @@ Ansible VM 1.2
 
 Changelog
 =========
+
+**1.3**
+
+Add Mailcatcher to Upstart
 
 **1.2**
 
