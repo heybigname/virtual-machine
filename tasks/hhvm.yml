@@ -6,3 +6,7 @@
 
 - name: HHVM | Install HHVM
   apt: pkg=hhvm state=latest force=yes
+
+- name: HHVM | Update Composer to Use HHVM
+  command: echo "alias composer=\"hhvm \`which composer\`\"" >> ~/.zshrc
+  when: install_web == "yes"

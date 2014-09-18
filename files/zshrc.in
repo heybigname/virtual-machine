@@ -47,3 +47,7 @@ PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
 # Change to the vagrant folder on connect
 cd /vagrant
+
+# set up locale
+export LC_ALL="en_US.UTF-8"
+
