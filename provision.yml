@@ -22,6 +22,8 @@
       when: install_hhvm == "yes"
     - include: tasks/mailcatcher.yml
       when: install_mailcatcher == "yes"
+    - include: tasks/beanstalkd.yml
+      when: install_beanstalkd == "yes"
     - include: tasks/nodejs.yml
       when: install_javascript_build_system == "yes"
   handlers:
