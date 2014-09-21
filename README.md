@@ -1,4 +1,4 @@
-Ansible VM 1.3
+Ansible VM 1.5
 ==============
 
 - [Ubuntu](http://www.ubuntu.com/) 14.04 Trusty 64bit
@@ -6,7 +6,8 @@ Ansible VM 1.3
 - [PHP](http://php.net/) 5.5 _(optional)_
 - [NodeJS](http://nodejs.org/) v0.10.29 _(optional)_
 - [MailCatcher](http://mailcatcher.me/) _(optional)_
-- [HHVM](http://hhvm.com/) _(optional)_
+- [Beanstalkd](http://kr.github.io/beanstalkd/) _(optional)_
+- [Redis](http://redis.io) _(optional)_
 - Site configuration defined in the [Vagrantfile](https://github.com/heybigname/ansible/blob/master/Vagrantfile)
 - Database configuration defined in the [Vagrantfile](https://github.com/heybigname/ansible/blob/master/Vagrantfile)
 
@@ -18,11 +19,20 @@ Ansible VM 1.3
     - set the name for the box (the part that says CHANGE ME)
     - configure your hostname, database details, site details, etc
 4. Install [Vagrant](http://vagrantup.com), [VirtualBox](https://www.virtualbox.org/), and [Ansible](http://www.ansible.com/home).
-5. Just run `vagrant up`t
+5. Just run `vagrant up`
 
 
 Changelog
 =========
+
+**1.5**
+
+Add redis as an optional package
+
+**1.4**
+
+Add beanstalkd as an optional package
+change zsh theme
 
 **1.3**
 

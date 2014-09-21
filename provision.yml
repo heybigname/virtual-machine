@@ -26,6 +26,8 @@
       when: install_beanstalkd == "yes"
     - include: tasks/nodejs.yml
       when: install_javascript_build_system == "yes"
+    - include: tasks/redis.yml
+      when: install_redis == "yes"
   handlers:
     - name: restart nginx
       service: name=nginx state=restarted
