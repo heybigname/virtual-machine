@@ -27,6 +27,11 @@
 - name: System | Install Git
   apt: pkg=git-core state=installed
 
+# Ruby
+
+- name: System | Install Ruby Development Headers
+  apt: pkg=ruby1.9.1-dev state=installed
+
 # Host Configuration
 
 - name: System | Set the hostname /etc/hostname
