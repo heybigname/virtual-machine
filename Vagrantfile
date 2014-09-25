@@ -28,6 +28,8 @@ Vagrant.configure("2") do |config|
                     document_root: "/vagrant/site2/public2"
                 }
             ],
+            php_configs: ["upload_max_filesize=100M", "post_max_size=100M"],
+            install_gems: ["compass", "zurb-foundation"],
             install_db: "yes",
             install_ohmyzsh: "yes",
             install_web: "yes",

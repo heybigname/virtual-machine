@@ -10,3 +10,9 @@
 - name: PHP5-FPM | Install WWW Pool Configuration File
   template: src=../files/php-fpm_pool_www.conf dest=/etc/php5/fpm/pool.d/www.conf
   notify: restart php5-fpm
+
+# Update PHP.ini
+
+- name: PHP5-FPM | Install Custom PHP.ini Configurations for FPM PHP
+  shell: echo "{{ item }}" >> /etc/php5/fpm/php.ini
+  with_items: php_configs

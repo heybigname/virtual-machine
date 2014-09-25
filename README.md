@@ -1,4 +1,4 @@
-Ansible VM 1.5
+Ansible VM 1.6
 ==============
 
 - [Ubuntu](http://www.ubuntu.com/) 14.04 Trusty 64bit
@@ -10,6 +10,8 @@ Ansible VM 1.5
 - [Redis](http://redis.io) _(optional)_
 - Site configuration defined in the [Vagrantfile](https://github.com/heybigname/ansible/blob/master/Vagrantfile)
 - Database configuration defined in the [Vagrantfile](https://github.com/heybigname/ansible/blob/master/Vagrantfile)
+- Custom PHP.ini configurations can be defined in the [Vagrantfile](https://github.com/heybigname/ansible/blob/master/Vagrantfile)
+- Arbitrary Ruby Gems can be installed from the [Vagrantfile](https://github.com/heybigname/ansible/blob/master/Vagrantfile)
 
 # Usage
 
@@ -24,6 +26,10 @@ Ansible VM 1.5
 
 Changelog
 =========
+
+**1.6**
+
+Allow installation of Gems and custom PHP.ini declarations from Vagrantfile.
 
 **1.5**
 

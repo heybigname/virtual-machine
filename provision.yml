@@ -28,6 +28,7 @@
       when: install_javascript_build_system == "yes"
     - include: tasks/redis.yml
       when: install_redis == "yes"
+    - include: tasks/ruby.yml
   handlers:
     - name: restart nginx
       service: name=nginx state=restarted

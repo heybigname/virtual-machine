@@ -25,3 +25,9 @@
 - name: PHP | Install Composer
   shell: curl -sS https://getcomposer.org/installer | php && mv composer.phar /usr/local/bin/composer creates=/usr/local/bin/composer
   when: composer_folder.stat.isdir is not defined
+
+# Update PHP.ini
+
+- name: PHP | Install Custom PHP.ini Configurations for CLI PHP
+  shell: echo "{{ item }}" >> /etc/php5/cli/php.ini
+  with_items: php_configs
