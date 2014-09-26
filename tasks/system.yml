@@ -32,9 +32,12 @@
 - name: System | Install Ruby Development Headers
   apt: pkg=ruby1.9.1-dev state=installed
 
+- name: System | Install Ruby Gems Package
+  apt: pkg=rubygems-integration state=installed
+
 # Host Configuration
 
-- name: System | Set the hostname /etc/hostname
+- name: System | Set the hostname in /etc/hostname
   shell: echo {{ hostname }} > /etc/hostname
   when: hostname is defined
 
