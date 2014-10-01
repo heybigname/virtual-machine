@@ -2,10 +2,22 @@
 - hosts: all
   sudo: true
   vars:
-    install_db: "yes"
-    install_web: "yes"
-    install_mailcatcher: "yes"
-    install_javascript_build_system: "yes"
+    hostname: "dev"
+    dbuser: "root"
+    dbpasswd: "password"
+    databases: []
+    sites: []
+    install_db: "no"
+    install_web: "no"
+    install_ohmyzsh: "no"
+    install_hhvm: "no"
+    install_mailcatcher: "no"
+    install_beanstalkd: "no"
+    install_redis: "no"
+    install_javascript_build_system: "no"
+    install_gems: []
+    install_r: "no"
+    r_packages: []
   tasks:
     - include: tasks/system.yml
     - include: tasks/ohmyzsh.yml
@@ -29,6 +41,8 @@
     - include: tasks/redis.yml
       when: install_redis == "yes"
     - include: tasks/ruby.yml
+    - include: tasks/r.yml
+      when: install_r == "yes"
   handlers:
     - name: restart nginx
       service: name=nginx state=restarted

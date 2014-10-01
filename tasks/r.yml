@@ -1,0 +1,15 @@
+---
+# R
+
+- name: R | Install R PPA
+  apt_repository: repo='ppa:marutter/rrutter' update_cache=yes
+
+- name: R | Install R
+  apt: pkg={{ item }} state=latest force=yes
+  with_items:
+    - r-base
+    - r-base-dev
+
+- name: R | Install R Packages
+  command: R -e "install.packages(\"{{ item }}\", dependencies = TRUE, repos=\"http://cran.r-project.org\")"
+  with_items: r_packages

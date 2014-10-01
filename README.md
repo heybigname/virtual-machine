@@ -1,4 +1,4 @@
-Ansible VM 1.6
+Ansible VM 1.7
 ==============
 
 - [Ubuntu](http://www.ubuntu.com/) 14.04 Trusty 64bit
@@ -8,6 +8,7 @@ Ansible VM 1.6
 - [MailCatcher](http://mailcatcher.me/) _(optional)_
 - [Beanstalkd](http://kr.github.io/beanstalkd/) _(optional)_
 - [Redis](http://redis.io) _(optional)_
+- [R](http://r-project.org) _(optional)_
 - Site configuration defined in the [Vagrantfile](https://github.com/heybigname/ansible/blob/master/Vagrantfile)
 - Database configuration defined in the [Vagrantfile](https://github.com/heybigname/ansible/blob/master/Vagrantfile)
 - Custom PHP.ini configurations can be defined in the [Vagrantfile](https://github.com/heybigname/ansible/blob/master/Vagrantfile)
@@ -26,6 +27,10 @@ Ansible VM 1.6
 
 Changelog
 =========
+
+**1.7**
+
+Allow installation of R and R packages. Created default values for every option, so no more errors when you upgrade.
 
 **1.6**
 
