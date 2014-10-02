@@ -37,7 +37,7 @@ Vagrant.configure("2") do |config|
             install_hhvm: "yes",
             install_beanstalkd: "no",
             install_redis: "no",
-            install_javascript_build_system: "no"
+            install_javascript_build_system: "no",
             install_r: "no",
             r_packages: []
         }
