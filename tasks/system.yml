@@ -1,8 +1,13 @@
 ---
 # Update Apt Repository
 
-- name: System | Update repository
+- name: System | Update Repository
   apt: update_cache=yes
+
+- name: System | Install Various Packages
+  apt: pkg={{ item }} state=installed
+  with_items:
+    - unzip
 
 # Python Requirements
 

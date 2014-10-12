@@ -1,4 +1,4 @@
-Ansible VM 1.7
+Ansible VM 1.8
 ==============
 
 - [Ubuntu](http://www.ubuntu.com/) 14.04 Trusty 64bit
@@ -9,6 +9,8 @@ Ansible VM 1.7
 - [Beanstalkd](http://kr.github.io/beanstalkd/) _(optional)_
 - [Redis](http://redis.io) _(optional)_
 - [R](http://r-project.org) _(optional)_
+- [Java](http://java.com) _(optional)_
+- [Scala](http://scala-lang.org) _(optional)_
 - Site configuration defined in the [Vagrantfile](https://github.com/heybigname/ansible/blob/master/Vagrantfile)
 - Database configuration defined in the [Vagrantfile](https://github.com/heybigname/ansible/blob/master/Vagrantfile)
 - Custom PHP.ini configurations can be defined in the [Vagrantfile](https://github.com/heybigname/ansible/blob/master/Vagrantfile)
@@ -24,9 +26,111 @@ Ansible VM 1.7
 4. Install [Vagrant](http://vagrantup.com), [VirtualBox](https://www.virtualbox.org/), and [Ansible](http://www.ansible.com/home).
 5. Just run `vagrant up`
 
+# List of Options
+
+Here is a list of options and their default values.
+
+    hostname: "dev"
+    dbuser: "root"
+    dbpasswd: "password"
+    databases: []
+    sites: []
+    install_db: "no"
+    install_web: "no"
+    install_ohmyzsh: "no"
+    install_hhvm: "no"
+    install_mailcatcher: "no"
+    install_beanstalkd: "no"
+    install_redis: "no"
+    install_javascript_build_system: "no"
+    install_gems: []
+    install_r: "no"
+    r_packages: []
+    install_java: "no"
+    install_scala: "no"
+    scala_activator_version: "1.2.10"
+
+# Example Vagrantfiles
+
+**PHP / NGINX**
+
+This example includes definitions for all options.
+
+    Vagrant.configure("2") do |config|
+        config.vm.box = "trusty64"
+        config.vm.box_url = "http://cloud-images.ubuntu.com/vagrant/trusty/current/trusty-server-cloudimg-amd64-vagrant-disk1.box"
+
+        config.vm.network :private_network, ip: "10.10.10.10"
+
+        config.vm.provider :virtualbox do |v|
+            v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
+            v.customize ["modifyvm", :id, "--memory", 768]
+            v.customize ["modifyvm", :id, "--name", "CHANGE ME BEFORE USE"]
+        end
+
+        config.vm.provision "ansible" do |ansible|
+            ansible.playbook = "ansible/provision.yml"
+            ansible.extra_vars = {
+                hostname: "dev",
+                dbuser: "root",
+                dbpasswd: "password",
+                databases: ["development"],
+                sites: [
+                    {
+                        hostname: "app.local",
+                        document_root: "/vagrant/site/public"
+                    }, {
+                        hostname: "app2.local",
+                        document_root: "/vagrant/site2/public2"
+                    }
+                ],
+                php_configs: ["upload_max_filesize=100M", "post_max_size=100M"],
+                install_gems: ["compass", "zurb-foundation"],
+                install_db: "yes",
+                install_ohmyzsh: "yes",
+                install_web: "yes",
+                install_mailcatcher: "yes",
+                install_hhvm: "yes",
+                install_beanstalkd: "no",
+                install_redis: "no",
+                install_javascript_build_system: "no",
+                install_r: "no",
+                r_packages: []
+            }
+        end
+    end
+
+
+**Java / Scala**
+
+    Vagrant.configure("2") do |config|
+        config.vm.box = "trusty64"
+        config.vm.box_url = "http://cloud-images.ubuntu.com/vagrant/trusty/current/trusty-server-cloudimg-amd64-vagrant-disk1.box"
+
+        config.vm.network :private_network, ip: "10.10.10.10"
+
+        config.vm.provider :virtualbox do |v|
+            v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
+            v.customize ["modifyvm", :id, "--memory", 1024]
+            v.customize ["modifyvm", :id, "--name", "CHANGE ME BEFORE USE"]
+        end
+
+        config.vm.provision "ansible" do |ansible|
+            ansible.playbook = "ansible/provision.yml"
+            ansible.extra_vars = {
+                install_java: "yes",
+                install_scala: "yes"
+            }
+        end
+    end
+
 
 Changelog
 =========
+
+**1.8**
+
+Add Java / Scala Activator support.
 
 **1.7**
 

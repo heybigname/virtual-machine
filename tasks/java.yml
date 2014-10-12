@@ -1,0 +1,11 @@
+---
+# Java
+
+- name: Java | Install Java 8 Repository
+  apt_repository: repo='ppa:webupd8team/java' update_cache=yes
+
+- name: Java | Automatically Approve License ;)
+  shell: echo debconf shared/accepted-oracle-license-v1-1 select true | debconf-set-selections && echo debconf shared/accepted-oracle-license-v1-1 seen true | debconf-set-selections
+
+- name: Java | Install Java 8
+  apt: pkg=oracle-java8-installer state=latest force=yes

@@ -18,6 +18,9 @@
     install_gems: []
     install_r: "no"
     r_packages: []
+    install_java: "no"
+    install_scala: "no"
+    scala_activator_version: "1.2.10"
   tasks:
     - include: tasks/system.yml
     - include: tasks/ohmyzsh.yml
@@ -43,6 +46,10 @@
     - include: tasks/ruby.yml
     - include: tasks/r.yml
       when: install_r == "yes"
+    - include: tasks/java.yml
+      when: install_java == "yes"
+    - include: tasks/scala.yml
+      when: install_scala == "yes"
   handlers:
     - name: restart nginx
       service: name=nginx state=restarted
