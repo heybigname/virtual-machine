@@ -14,5 +14,10 @@
 # Update PHP.ini
 
 - name: PHP5-FPM | Install Custom PHP.ini Configurations for FPM PHP
-  shell: echo "{{ item }}" >> /etc/php5/fpm/php.ini
+  ini_file: dest=/etc/php5/fpm/php.ini
+            section=PHP
+            option={{ item.option }}
+            value={{ item.value }}
+            backup=yes
   with_items: php_configs
+
