@@ -1,7 +1,7 @@
 Ansible VM 1.8
 ==============
 
-This virtual machine configuration is designed to have ONE application per machine. If you don't like that, try something like Homestead.  This virtual machine is a particularly good fit if you run Ubuntu 14.04 LTS on your servers.
+This virtual machine configuration is designed to have ONE application per machine. However, it does support multiple domains / sites per configuration. This virtual machine is a particularly good fit if you run Ubuntu 14.04 LTS on your servers.
 
 - [Ubuntu](http://www.ubuntu.com/) 14.04 Trusty 64bit
 - [NGINX](http://nginx.org/) + [PHP5-FPM](http://php-fpm.org/) _(optional)_
