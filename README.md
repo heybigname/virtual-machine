@@ -5,7 +5,7 @@ This virtual machine configuration is designed to have ONE application per machi
 
 - [Ubuntu](http://www.ubuntu.com/) 14.04 Trusty 64bit
 - [NGINX](http://nginx.org/) + [PHP5-FPM](http://php-fpm.org/) _(optional)_
-- [PHP](http://php.net/) 5.5 _(optional)_
+- [PHP](http://php.net/) 5.6 _(optional)_
 - [NodeJS](http://nodejs.org/) v0.10.29 _(optional)_
 - [MailCatcher](http://mailcatcher.me/) _(optional)_
 - [Beanstalkd](http://kr.github.io/beanstalkd/) _(optional)_
@@ -132,6 +132,10 @@ end
 
 Changelog
 =========
+
+**1.9**
+
+Updated PHP from 5.5 to 5.6
 
 **1.8**
 
