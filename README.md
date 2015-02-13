@@ -133,9 +133,13 @@ end
 Changelog
 =========
 
-**1.9**
+**1.10**
 
 Updated PHP from 5.5 to 5.6
+
+**1.9**
+
+Change implementation of PHP configurations
 
 **1.8**
 
