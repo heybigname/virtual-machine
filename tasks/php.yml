@@ -1,7 +1,7 @@
 ---
 # PHP
 
-- name: PHP | Install 5.5 PPA
+- name: PHP | Install 5.6 PPA
   apt_repository: repo='ppa:ondrej/php5-5.6' update_cache=yes
   
 - name: PHP | Install PHP and Modules
