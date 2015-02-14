@@ -7,6 +7,7 @@
     dbpasswd: "password"
     databases: []
     sites: []
+    install_swapfile: "no"
     install_db: "no"
     install_web: "no"
     install_ohmyzsh: "no"
@@ -23,6 +24,8 @@
     scala_activator_version: "1.2.10"
   tasks:
     - include: tasks/system.yml
+    - include: tasks/swapfile.yml
+      when: install_swapfile == "yes"
     - include: tasks/ohmyzsh.yml
       when: install_ohmyzsh == "yes"
     - include: tasks/mysql.yml
