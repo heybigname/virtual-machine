@@ -1,5 +1,5 @@
-Ansible VM 1.8
-==============
+Ansible VM 1.10
+===============
 
 This virtual machine configuration is designed to have ONE application per machine. However, it does support multiple domains / sites per configuration. This virtual machine is a particularly good fit if you run Ubuntu 14.04 LTS on your servers.
 
@@ -133,9 +133,13 @@ end
 Changelog
 =========
 
-**1.9**
+**1.10**
 
 Updated PHP from 5.5 to 5.6
+
+**1.9**
+
+Change implementation of PHP configurations
 
 **1.8**
 
