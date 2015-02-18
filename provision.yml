@@ -50,6 +50,8 @@
       when: install_java == "yes"
     - include: tasks/scala.yml
       when: install_scala == "yes"
+    - include: tasks/swap.yml
+      when: create_swap == "yes"
   handlers:
     - name: restart nginx
       service: name=nginx state=restarted

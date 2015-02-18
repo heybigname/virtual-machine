@@ -17,6 +17,7 @@ This virtual machine configuration is designed to have ONE application per machi
 - Database configuration defined in the [Vagrantfile](https://github.com/heybigname/ansible/blob/master/Vagrantfile)
 - Custom PHP.ini configurations can be defined in the [Vagrantfile](https://github.com/heybigname/ansible/blob/master/Vagrantfile)
 - Arbitrary Ruby Gems can be installed from the [Vagrantfile](https://github.com/heybigname/ansible/blob/master/Vagrantfile)
+- Swap file can be created by setting create_swap to yes. Creates a 1Gb swap file at "/extraswap"
 
 # Usage
 
@@ -51,7 +52,8 @@ install_r: "no"
 r_packages: []
 install_java: "no"
 install_scala: "no"
-scala_activator_version: "1.2.10"
+scala_activator_version: "1.2.10",
+create_swap: "no",
 ```
 
 # Example Vagrantfiles
@@ -98,7 +100,8 @@ Vagrant.configure("2") do |config|
             install_redis: "no",
             install_javascript_build_system: "no",
             install_r: "no",
-            r_packages: []
+            r_packages: [],
+            create_swap: "no"
         }
     end
 end
@@ -132,6 +135,10 @@ end
 
 Changelog
 =========
+
+**1.11**
+
+Ability to create a swap file from the configuration file
 
 **1.10**
 

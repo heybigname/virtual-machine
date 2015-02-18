@@ -42,7 +42,8 @@ Vagrant.configure("2") do |config|
             install_redis: "no",
             install_javascript_build_system: "no",
             install_r: "no",
-            r_packages: []
+            r_packages: [],
+            create_swap: "no"
         }
     end
 end
