@@ -1,4 +1,4 @@
-Ansible VM 1.10
+Ansible VM 1.11
 ===============
 
 This virtual machine configuration is designed to have ONE application per machine. However, it does support multiple domains / sites per configuration. This virtual machine is a particularly good fit if you run Ubuntu 14.04 LTS on your servers.
@@ -12,7 +12,8 @@ This virtual machine configuration is designed to have ONE application per machi
 - [Redis](http://redis.io) _(optional)_
 - [R](http://r-project.org) _(optional)_
 - [Java](http://java.com) _(optional)_
-- [Scala](http://scala-lang.org) _(optional)_
+- [Typesafe Activator](http://scala-lang.org) _(optional)_
+- [EventStore](http://geteventstore.com) _(optional)_
 - Site configuration defined in the [Vagrantfile](https://github.com/heybigname/ansible/blob/master/Vagrantfile)
 - Database configuration defined in the [Vagrantfile](https://github.com/heybigname/ansible/blob/master/Vagrantfile)
 - Custom PHP.ini configurations can be defined in the [Vagrantfile](https://github.com/heybigname/ansible/blob/master/Vagrantfile)
@@ -50,8 +51,10 @@ install_gems: []
 install_r: "no"
 r_packages: []
 install_java: "no"
-install_scala: "no"
-scala_activator_version: "1.2.10"
+install_typesafe_activator: "no"
+typesafe_activator_version: "1.2.10"
+install_eventstore: "no",
+eventstore_version: "3.0.1"
 ```
 
 # Example Vagrantfiles
@@ -123,7 +126,8 @@ Vagrant.configure("2") do |config|
         ansible.playbook = "ansible/provision.yml"
         ansible.extra_vars = {
             install_java: "yes",
-            install_scala: "yes"
+            install_typesafe_activator: "yes",
+            install_eventstore: "yes"
         }
     end
 end
@@ -132,6 +136,11 @@ end
 
 Changelog
 =========
+
+**1.11**
+
+Change Scala to Typesafe Activator
+Add EventStore 
 
 **1.10**
 
