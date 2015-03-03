@@ -1,0 +1,4 @@
+#!/bin/bash
+
+cd /vagrant/eventstore
+. ./run-node.sh --ext-ip={{ bind_ip }}

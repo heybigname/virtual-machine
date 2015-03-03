@@ -42,6 +42,8 @@ Vagrant.configure("2") do |config|
             install_redis: "no",
             install_javascript_build_system: "no",
             install_r: "no",
+            install_eventstore: "no",
+            eventstore_version: "3.0.1"
             r_packages: []
         }
     end

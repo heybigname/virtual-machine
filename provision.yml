@@ -19,8 +19,10 @@
     install_r: "no"
     r_packages: []
     install_java: "no"
-    install_scala: "no"
-    scala_activator_version: "1.2.10"
+    install_typesafe_activator: "no"
+    typesafe_activator_version: "1.2.10"
+    install_eventstore: "no"
+    eventstore_version: "3.0.1"
   tasks:
     - include: tasks/system.yml
     - include: tasks/ohmyzsh.yml
@@ -48,8 +50,10 @@
       when: install_r == "yes"
     - include: tasks/java.yml
       when: install_java == "yes"
-    - include: tasks/scala.yml
-      when: install_scala == "yes"
+    - include: tasks/typesafe_activator.yml
+      when: install_typesafe_activator == "yes"
+    - include: tasks/eventstore.yml
+      when: install_eventstore == "yes"
   handlers:
     - name: restart nginx
       service: name=nginx state=restarted
