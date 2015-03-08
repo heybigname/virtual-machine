@@ -149,7 +149,7 @@ Vagrant.configure("2") do |config|
     config.vm.provision "ansible" do |ansible|
         ansible.playbook = "ansible/provision.yml"
         ansible.extra_vars = {
-            bind_ip="10.10.10.10",
+            bind_ip: "10.10.10.10",
             install_eventstore: "yes",
             install_eventstore_version: "3.0.1"
         }
