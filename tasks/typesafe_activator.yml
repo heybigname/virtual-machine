@@ -1,14 +1,14 @@
 ---
-# Scala
+# TypeSafe Activator
 
-- name: Scala | Download Activator
+- name: TypeSafe Activator | Download 
   get_url: url=http://downloads.typesafe.com/typesafe-activator/{{ scala_activator_version }}/typesafe-activator-{{ scala_activator_version }}.zip dest=/root/activator.zip mode=0440
 
-- name: Scala | Unzip Activator
+- name: TypeSafe Activator | Extract 
   shell: unzip /root/activator.zip -d /root
 
-- name: Scala | Install Activator
+- name: TypeSafe Activator | Install 
   shell: cp /root/activator-{{ scala_activator_version }}/activator* /usr/local/bin
 
-- name: Scala | Set Binary Permissions
+- name: TypeSafe Activator | Set Binary Permissions
   file: path=/usr/local/bin/activator mode=0755

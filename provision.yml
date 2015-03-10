@@ -19,9 +19,16 @@
     install_r: "no"
     r_packages: []
     install_java: "no"
+<<<<<<< HEAD
     install_scala: "no"
     scala_activator_version: "1.2.10"
     enable_swap: "no"
+=======
+    install_typesafe_activator: "no"
+    typesafe_activator_version: "1.2.10"
+    install_eventstore: "no"
+    eventstore_version: "3.0.1"
+>>>>>>> d2a1c4a24b199376ab4c6284a5df1b038a1aa16c
   tasks:
     - include: tasks/system.yml
     - include: tasks/ohmyzsh.yml
@@ -49,10 +56,17 @@
       when: install_r == "yes"
     - include: tasks/java.yml
       when: install_java == "yes"
+<<<<<<< HEAD
     - include: tasks/scala.yml
       when: install_scala == "yes"
     - include: tasks/swap.yml
       when: enable_swap == "yes"
+=======
+    - include: tasks/typesafe_activator.yml
+      when: install_typesafe_activator == "yes"
+    - include: tasks/eventstore.yml
+      when: install_eventstore == "yes"
+>>>>>>> d2a1c4a24b199376ab4c6284a5df1b038a1aa16c
   handlers:
     - name: restart nginx
       service: name=nginx state=restarted

@@ -1,0 +1,23 @@
+---
+# EventStore
+
+- name: EventStore | Download
+  get_url: url=http://download.geteventstore.com/binaries/EventStore-OSS-Linux-v{{ eventstore_version }}.tar.gz dest=/vagrant/eventstore.tar.gz mode=0440
+
+- name: EventStore | Extract
+  unarchive: src=/vagrant/eventstore.tar.gz dest=/vagrant copy=no
+
+- name: EventStore | Link Current Version
+  file: src=/vagrant/EventStore-OSS-Linux-v{{ eventstore_version }} dest=/vagrant/eventstore state=link
+
+- name: EventStore | Install Start Script
+  template: src=../files/start_eventstore dest=/vagrant/start_eventstore
+
+- name: EventStore | Making Start Script Executable
+  file: path=/vagrant/start_eventstore mode=0755
+
+- name: EventStore | Configure Upstart
+  template: src=../files/eventstore_upstart.conf dest=/etc/init/eventstore.conf
+
+- name: EventStore | Start
+  service: name=eventstore state=started
