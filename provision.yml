@@ -21,6 +21,7 @@
     install_java: "no"
     install_scala: "no"
     scala_activator_version: "1.2.10"
+    enable_swap: "no"
   tasks:
     - include: tasks/system.yml
     - include: tasks/ohmyzsh.yml
@@ -51,7 +52,7 @@
     - include: tasks/scala.yml
       when: install_scala == "yes"
     - include: tasks/swap.yml
-      when: create_swap == "yes"
+      when: enable_swap == "yes"
   handlers:
     - name: restart nginx
       service: name=nginx state=restarted

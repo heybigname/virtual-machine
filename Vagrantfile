@@ -43,7 +43,8 @@ Vagrant.configure("2") do |config|
             install_javascript_build_system: "no",
             install_r: "no",
             r_packages: [],
-            create_swap: "no"
+            enable_swap: "no",
+            swap_size_in_mb: "1024"
         }
     end
 end
