@@ -54,7 +54,9 @@ install_java: "no"
 install_typesafe_activator: "no"
 typesafe_activator_version: "1.2.10"
 install_eventstore: "no",
-eventstore_version: "3.0.1"
+eventstore_version: "3.0.1",
+enable_swap: "no",
+swap_size_in_mb: "1024"
 ```
 
 # Example Vagrantfiles
@@ -101,6 +103,8 @@ Vagrant.configure("2") do |config|
             install_redis: "no",
             install_javascript_build_system: "no",
             install_r: "no",
+            enable_swap: "no",
+            swap_size_in_mb: "1024",
             r_packages: []
         }
     end
@@ -159,6 +163,10 @@ end
 
 Changelog
 =========
+
+**1.12**
+
+Added optional swap creation
 
 **1.11**
 
