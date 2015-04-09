@@ -42,6 +42,9 @@ Vagrant.configure("2") do |config|
             install_redis: "no",
             install_javascript_build_system: "no",
             install_r: "no",
+            r_packages: [],
+            enable_swap: "no",
+            swap_size_in_mb: "1024",
             install_eventstore: "no",
             eventstore_version: "3.0.1",
             r_packages: []
