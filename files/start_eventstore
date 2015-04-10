@@ -2,3 +2,4 @@
 
 cd /vagrant/eventstore
 . ./run-node.sh --ext-ip={{ bind_ip }}
+. ./run-node.sh --ext-ip={{ bind_ip }} --http-prefixes=http://app.local:2113/

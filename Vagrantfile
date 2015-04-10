@@ -47,6 +47,7 @@ Vagrant.configure("2") do |config|
             swap_size_in_mb: "1024",
             install_eventstore: "no",
             eventstore_version: "3.0.1",
+            bind_ip: "10.10.10.10",
             r_packages: []
         }
     end
