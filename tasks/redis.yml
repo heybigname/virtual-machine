@@ -4,5 +4,5 @@
 - name: Redis | Install Redis PPA
   apt_repository: repo='ppa:chris-lea/redis-server' update_cache=yes
 
-- name: HHVM | Install Redis
+- name: Redis | Install Redis
   apt: pkg=redis-server state=latest force=yes
