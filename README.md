@@ -39,6 +39,7 @@ dbuser: "root"
 dbpasswd: "password"
 databases: []
 sites: []
+php_modules: ["php5-mysql", "php5-gd", "php-apc", "php5-mcrypt", "php5-curl", "php5-intl", "php5-memcached"]
 install_db: "no"
 install_web: "no"
 install_ohmyzsh: "no"

@@ -3,19 +3,15 @@
 
 - name: PHP | Install 5.6 PPA
   apt_repository: repo='ppa:ondrej/php5-5.6' update_cache=yes
-  
-- name: PHP | Install PHP and Modules
+
+- name: PHP | Install PHP
+  apt: pkg=php5 state=latest
+  tags: common
+
+- name: PHP | Install PHP Modules
   apt: pkg={{ item }} state=latest
   tags: common
-  with_items:
-    - php5
-    - php5-mysql
-    - php5-gd
-    - php-apc
-    - php5-mcrypt
-    - php5-curl
-    - php5-intl
-    - php5-memcached
+  with_items: php_modules
 
 # Composer
 
