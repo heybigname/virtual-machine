@@ -17,6 +17,7 @@
     install_javascript_build_system: "no"
     install_gems: []
     install_r: "no"
+    php_configs: []
     r_packages: []
     install_java: "no"
     enable_swap: "no"
