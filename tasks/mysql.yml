@@ -15,9 +15,12 @@
     - ::1
     - localhost
 
-- name: MySQL | Copy Config File
+- name: MySQL | Copy Server Config File
   template: src=../files/my.cnf dest=/etc/mysql/my.cnf owner={{ dbuser }} mode=0600
   notify: restart mysql
+
+- name: MySQL | Copy User Config File
+  template: src=../files/.my.cnf dest=/root/.my.cnf owner=root mode=0600
 
 - name: MySQL | Create Databases
   mysql_db: name={{ item }} state=present login_password={{ dbpasswd }} login_user={{ dbuser }}
