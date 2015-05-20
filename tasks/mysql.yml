@@ -16,7 +16,7 @@
     - localhost
 
 - name: MySQL | Copy Config File
-  template: src=../files/my.cnf dest=/etc/mysql/my.cnf owner={{ dbuser }} mode=0600
+  template: src=../files/my.cnf dest=/etc/mysql/my.cnf owner=root mode=0600
   notify: restart mysql
 
 - name: MySQL | Create Databases

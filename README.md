@@ -86,7 +86,7 @@ Vagrant.configure("2") do |config|
         ansible.playbook = "ansible/provision.yml"
         ansible.extra_vars = {
             hostname: "dev",
-            dbuser: "root",
+            dbuser: "mydbuser",
             dbpasswd: "password",
             databases: ["development"],
             sites: [
