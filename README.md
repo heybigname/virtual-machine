@@ -41,6 +41,7 @@ dbuser: "root"
 dbpasswd: "password"
 databases: []
 sites: []
+php_configs: []
 php_modules: ["php5-mysql", "php5-gd", "php-apc", "php5-mcrypt", "php5-curl", "php5-intl", "php5-memcached"]
 install_db: "no"
 install_web: "no"
@@ -97,7 +98,16 @@ Vagrant.configure("2") do |config|
                     document_root: "/vagrant/site2/public2"
                 }
             ],
-            php_configs: ["upload_max_filesize=100M", "post_max_size=100M"],
+            php_configs: [
+                {
+                    option: "upload_max_filesize",
+                    value: "100M"
+                },
+                {
+                    option: "post_max_size",
+                    value: "100M"
+                }
+            ],
             install_gems: ["compass", "zurb-foundation"],
             install_db: "yes",
             install_ohmyzsh: "yes",
