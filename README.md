@@ -1,6 +1,6 @@
 > There is a **bug with Ansible 1.9.1** that messes up provisioning of this box and MANY others. Downgrade to 1.9.0.1 to resolve or simply run 'vagrant reload' after this box is provisioned (and it may work, no promises). The downgrade is confirmed.
 
-Ansible VM 2.0 
+Ansible VM 2.1 
 ===============
 
 This virtual machine configuration is designed to have ONE application per machine. However, it does support multiple domains / sites per configuration. This virtual machine is a particularly good fit if you run Ubuntu 14.04 LTS on your servers.
