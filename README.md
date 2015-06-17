@@ -8,6 +8,7 @@ This virtual machine configuration is designed to have ONE application per machi
 - [Ubuntu](http://www.ubuntu.com/) 14.04 Trusty 64bit
 - [NGINX](http://nginx.org/) + [PHP5-FPM](http://php-fpm.org/) _(optional)_
 - [PHP](http://php.net/) 5.6 _(optional)_
+- [Laravel Tools](http://laravel.com/) Laravel / Lumen / Envoy Tools _(optional)_
 - [NodeJS](http://nodejs.org/) v0.10.29 _(optional)_
 - [MailCatcher](http://mailcatcher.me/) _(optional)_
 - [Beanstalkd](http://kr.github.io/beanstalkd/) _(optional)_
@@ -46,6 +47,7 @@ php_modules: ["php5-mysql", "php5-gd", "php-apc", "php5-mcrypt", "php5-curl", "p
 install_db: "no"
 install_web: "no"
 install_ohmyzsh: "no"
+install_laravel_tools: "no"
 install_hhvm: "no"
 install_mailcatcher: "no"
 install_beanstalkd: "no"
@@ -112,7 +114,8 @@ Vagrant.configure("2") do |config|
             install_db: "yes",
             install_ohmyzsh: "yes",
             install_web: "yes",
-            install_mailcatcher: "yes",
+            install_laravel_tools: "yes",
+            install_mailcatcher: "no",
             install_hhvm: "yes",
             install_beanstalkd: "no",
             install_redis: "no",
@@ -121,30 +124,6 @@ Vagrant.configure("2") do |config|
             enable_swap: "no",
             swap_size_in_mb: "1024",
             r_packages: []
-        }
-    end
-end
-```
-
-**Scala**
-
-```ruby
-Vagrant.configure("2") do |config|
-    config.vm.box = "trusty64"
-    config.vm.box_url = "http://cloud-images.ubuntu.com/vagrant/trusty/current/trusty-server-cloudimg-amd64-vagrant-disk1.box"
-
-    config.vm.network :private_network, ip: "10.10.10.10"
-
-    config.vm.provider :virtualbox do |v|
-        v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
-        v.customize ["modifyvm", :id, "--memory", 1024]
-        v.customize ["modifyvm", :id, "--name", "CHANGE ME BEFORE USE"]
-    end
-
-    config.vm.provision "ansible" do |ansible|
-        ansible.playbook = "ansible/provision.yml"
-        ansible.extra_vars = {
-            install_typesafe_activator: "yes"
         }
     end
 end
@@ -179,6 +158,10 @@ end
 
 Changelog
 =========
+
+**2.1**
+
+Add option to install Laravel Tools.
 
 **2.0**
 

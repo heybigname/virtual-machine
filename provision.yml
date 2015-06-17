@@ -36,6 +36,7 @@
     eventstore_version: "3.0.1"
     eventstore_bind_ip: "10.10.10.10"
     eventstore_http_prefix: "http://app.local:2113/"
+    install_laravel_tools: "no"
   tasks:
     - include: tasks/system.yml
     - include: tasks/ohmyzsh.yml
@@ -65,6 +66,9 @@
       when: install_java == "yes"
     - include: tasks/swap.yml
       when: enable_swap == "yes"
+    - include: tasks/laravel-tools.yml
+      when: install_laravel_tools == "yes"
+      when: install_web == "yes"
     - include: tasks/typesafe_activator.yml
       when: install_typesafe_activator == "yes"
     - include: tasks/eventstore.yml
