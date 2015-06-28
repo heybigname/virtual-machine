@@ -14,6 +14,7 @@ This virtual machine configuration is designed to have ONE application per machi
 - [Beanstalkd](http://kr.github.io/beanstalkd/) _(optional)_
 - [Redis](http://redis.io) _(optional)_
 - [R](http://r-project.org) _(optional)_
+- [Symfony](http://symfony.com/) _(optional)_
 - [Java](http://java.com) _(optional)_
 - [Typesafe Activator](http://scala-lang.org) _(optional)_
 - [EventStore](http://geteventstore.com) _(optional)_
@@ -56,6 +57,7 @@ install_javascript_build_system: "no"
 install_gems: []
 install_r: "no"
 r_packages: []
+symfony: "no"
 install_java: "no"
 install_typesafe_activator: "no"
 typesafe_activator_version: "1.2.10"

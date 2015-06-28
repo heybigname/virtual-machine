@@ -27,6 +27,7 @@
     install_r: "no"
     php_configs: []
     r_packages: []
+    symfony: "no"
     install_java: "no"
     enable_swap: "no"
     swap_size_in_mb: 1024
@@ -62,6 +63,8 @@
     - include: tasks/ruby.yml
     - include: tasks/r.yml
       when: install_r == "yes"
+    - include: tasks/symfony.yml
+      when: symfony == "yes"
     - include: tasks/java.yml
       when: install_java == "yes"
     - include: tasks/swap.yml

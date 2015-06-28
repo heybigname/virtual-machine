@@ -1,0 +1,5 @@
+---
+# Symfony
+
+- name: Symfony | Create Doctrine schema
+  shell: ./app/console doctrine:schema:create
