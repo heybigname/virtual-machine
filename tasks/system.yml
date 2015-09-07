@@ -43,4 +43,4 @@
 # Host Configuration
 
 - name: System | Set hostname
-  hostname: {{ hostname }}
+  hostname: name={{ hostname }}
