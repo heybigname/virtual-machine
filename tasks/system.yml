@@ -42,10 +42,5 @@
 
 # Host Configuration
 
-- name: System | Set the hostname in /etc/hostname
-  shell: echo {{ hostname }} > /etc/hostname
-  when: hostname is defined
-
-- name: System | Set the hostname
-  shell: hostname {{ hostname }}
-  when: hostname is defined
+- name: System | Set hostname
+  hostname: name={{ hostname }}
