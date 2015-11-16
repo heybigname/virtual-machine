@@ -2,10 +2,10 @@
 # Laravel Tools
 
 - name: Laravel Tools | Install Laravel Installer
-  shell: composer global require "laravel/installer=~1.1"
+  shell: composer global require laravel/installer
 
 - name: Laravel Tools | Install Lumen Installer
-  shell: composer global require "laravel/lumen-installer=~1.0"
+  shell: composer global require laravel/lumen-installer
 
 - name: Laravel Tools | Install Envoy
-  shell: composer global require "laravel/envoy=~1.0"
+  shell: composer global require laravel/envoy
