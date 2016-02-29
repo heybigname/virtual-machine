@@ -1,5 +1,3 @@
-> There is a **bug with Ansible 1.9.1** that messes up provisioning of this box and MANY others. Downgrade to 1.9.0.1 to resolve.
-
 Ansible VM 2.1 
 ===============
 
