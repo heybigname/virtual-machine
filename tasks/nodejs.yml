@@ -7,3 +7,8 @@
 - name: Node.js | Install Node.js
   apt: pkg=nodejs state=latest
 
+- name: Node.js | Install N node version manager
+  command: npm install -g n
+
+- name: Node.js | Switch to latest stable version of node
+  command: n stable
