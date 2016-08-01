@@ -3,4 +3,4 @@
 
 - name: Ruby | Install Gems
   gem: name={{ item }} state=present user_install=no
-  with_items: install_gems
+  with_items: "{{install_gems}}"
