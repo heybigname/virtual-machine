@@ -1,11 +1,11 @@
 ---
 # PHP
 
-- name: PHP | Install 5.6 PPA
-  apt_repository: repo='ppa:ondrej/php5-5.6' update_cache=yes
+- name: PHP | Install Ondrej PHP PPA
+  apt_repository: repo='ppa:ondrej/php' update_cache=yes
 
 - name: PHP | Install PHP
-  apt: pkg=php5 state=latest
+  apt: pkg=php5.6 state=latest
   tags: common
 
 - name: PHP | Install PHP Modules
