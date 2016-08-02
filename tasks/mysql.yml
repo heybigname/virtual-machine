@@ -21,4 +21,4 @@
 
 - name: MySQL | Create Databases
   mysql_db: name={{ item }} state=present login_password={{ dbpasswd }} login_user={{ dbuser }}
-  with_items: databases
+  with_items: "{{databases}}"

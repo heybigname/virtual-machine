@@ -30,4 +30,4 @@
             option="{{ item.option }}"
             value="{{ item.value }}"
             backup=yes
-  with_items: php_configs
+  with_items: "{{php_configs}}"

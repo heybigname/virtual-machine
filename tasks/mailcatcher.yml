@@ -16,8 +16,11 @@
 - name: MailCatcher | Install MailCatcher
   action: command gem install mailcatcher creates=/usr/local/bin/mailcatcher
 
-- name: MailCatcher | Configure PHP.ini
+- name: MailCatcher | Configure FPM PHP.ini
   command: sed -ir "s/;\?sendmail_path =.*/sendmail_path = \/usr\/bin\/env \/usr\/local\/bin\/catchmail/" /etc/php5/fpm/php.ini
+  when: install_web == "yes"
+
+- name: MailCatcher | Configure CLI PHP.ini
   command: sed -ir "s/;\?sendmail_path =.*/sendmail_path = \/usr\/bin\/env \/usr\/local\/bin\/catchmail/" /etc/php5/cli/php.ini
   when: install_web == "yes"
 

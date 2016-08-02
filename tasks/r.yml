@@ -12,4 +12,4 @@
 
 - name: R | Install R Packages
   command: R -e "install.packages(\"{{ item }}\", dependencies = TRUE, repos=\"http://cran.r-project.org\")"
-  with_items: r_packages
+  with_items: "{{r_packages}}"
