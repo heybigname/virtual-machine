@@ -48,8 +48,7 @@ Vagrant.configure("2") do |config|
             install_eventstore: "no",
             eventstore_version: "3.0.1",
             eventstore_bind_ip: "10.10.10.10",
-            eventstore_http_prefix: "http://app.local:2113/",
-            r_packages: []
+            eventstore_http_prefix: "http://app.local:2113/"
         }
     end
 end
