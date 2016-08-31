@@ -8,12 +8,12 @@
     databases: []
     sites: []
     php_modules:
-      - php5-mysql
-      - php5-gd
+      - php5.6-mysql
+      - php5.6-gd
       - php-apc
-      - php5-mcrypt
-      - php5-curl
-      - php5-intl
+      - php5.6-mcrypt
+      - php5.6-curl
+      - php5.6-intl
       - php5-memcached
       - php5.6-mbstring
       - php5.6-dom
