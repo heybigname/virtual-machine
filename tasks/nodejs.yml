@@ -1,14 +1,17 @@
 ---
 # Node.js
 
-- name: Node.js | Install PPA
-  apt_repository: repo='ppa:chris-lea/node.js' update_cache=yes
+- name: Node.js | Install repository key
+  apt_key:
+    url: https://keyserver.ubuntu.com/pks/lookup?op=get&fingerprint=on&search=0x1655A0AB68576280
+    id: "68576280"
+    state: present
+
+- name: Node.js | Install Repository
+  apt_repository:
+    repo: "deb https://deb.nodesource.com/node_4.x trusty main"
+    state: present
+    update_cache: yes
 
 - name: Node.js | Install Node.js
   apt: pkg=nodejs state=latest
-
-- name: Node.js | Install N node version manager
-  command: npm install -g n
-
-- name: Node.js | Switch to latest stable version of node
-  command: n stable
