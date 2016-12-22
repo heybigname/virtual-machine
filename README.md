@@ -3,9 +3,9 @@ Ansible VM 2.1
 
 This virtual machine configuration is designed to have ONE application per machine. However, it does support multiple domains / sites per configuration. This virtual machine is a particularly good fit if you run Ubuntu 14.04 LTS on your servers.
 
-- [Ubuntu](http://www.ubuntu.com/) 14.04 Trusty 64bit
-- [NGINX](http://nginx.org/) + [PHP5-FPM](http://php-fpm.org/) _(optional)_
-- [PHP](http://php.net/) 5.6 _(optional)_
+- [Ubuntu](http://www.ubuntu.com/) 16.04 Xenial 64bit
+- [NGINX](http://nginx.org/) + [PHP7-FPM](http://php-fpm.org/) _(optional)_
+- [PHP](http://php.net/) 7.0 _(optional)_
 - [Laravel Tools](http://laravel.com/) Laravel / Lumen / Envoy Tools _(optional)_
 - [NodeJS](http://nodejs.org/) v0.10.29 _(optional)_
 - [MailCatcher](http://mailcatcher.me/) _(optional)_
@@ -41,7 +41,7 @@ dbpasswd: "password"
 databases: []
 sites: []
 php_configs: []
-php_modules: ["php5-mysql", "php5-gd", "php-apc", "php5-mcrypt", "php5-curl", "php5-intl", "php5-memcached"]
+php_modules: ["php7.0-mysql", "php7.0-gd", "php-apcu", "php7.0-mcrypt", "php7.0-curl", "php7.0-intl", "php-memcached"]
 install_db: "no"
 install_web: "no"
 install_ohmyzsh: "no"
