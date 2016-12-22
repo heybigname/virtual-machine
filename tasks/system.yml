@@ -35,7 +35,7 @@
 # Ruby
 
 - name: System | Install Ruby Development Headers
-  apt: pkg=ruby1.9.1-dev state=installed
+  apt: pkg=ruby2.3 state=installed
 
 - name: System | Install Ruby Gems Package
   apt: pkg=rubygems-integration state=installed

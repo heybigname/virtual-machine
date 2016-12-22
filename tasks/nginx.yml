@@ -1,6 +1,9 @@
 ---
 # NGINX
 
+- name: NGINX | Remove Apache
+  apt: pkg=apache2 state=absent purge=yes
+
 - name: NGINX | Install NGINX
   apt: pkg=nginx state=installed
 
@@ -20,8 +23,4 @@
 
 - name: NGINX | Configure /etc/hosts
   template: src=../files/hosts dest=/etc/hosts mode=0600
-# Remove Default Apache
-
-- name: NGINX | Remove Apache
-  apt: pkg=apache2 state=absent purge=yes
   notify: restart nginx

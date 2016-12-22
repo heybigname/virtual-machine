@@ -1,5 +1,5 @@
 127.0.0.1	localhost
-127.0.1.1	trusty64
+127.0.1.1	xenial64
 
 {% for host in sites %}
 127.0.0.1   {{ host.hostname }}
