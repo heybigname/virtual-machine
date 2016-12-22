@@ -46,7 +46,7 @@ export PATH=/usr/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bi
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
 # Change to the vagrant folder on connect
-cd /home/ubuntu
+cd /vagrant
 
 # set up locale
 export LC_ALL="en_US.UTF-8"

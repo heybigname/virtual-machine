@@ -20,7 +20,4 @@
 - name: NGINX | Activate Hosts
   file: src=/etc/nginx/sites-available/{{ item.hostname }}.conf dest=/etc/nginx/sites-enabled/{{ item.hostname }}.conf state=link
   with_items: "{{sites}}"
-
-- name: NGINX | Configure /etc/hosts
-  template: src=../files/hosts dest=/etc/hosts mode=0600
   notify: restart nginx

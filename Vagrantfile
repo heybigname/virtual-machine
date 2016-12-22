@@ -1,8 +1,7 @@
 # vagrant init ubuntu/xenial64
 
 Vagrant.configure("2") do |config|
-    config.vm.box = "xenial64"
-    config.vm.box_url = "https://cloud-images.ubuntu.com/xenial/current/xenial-server-cloudimg-amd64-vagrant.box"
+    config.vm.box = "ubuntu/xenial64"
 
     config.vm.network :private_network, ip: "10.10.10.10"
 
@@ -11,6 +10,8 @@ Vagrant.configure("2") do |config|
         v.customize ["modifyvm", :id, "--memory", 1024]
         v.customize ["modifyvm", :id, "--name", "CHANGE ME BEFORE USE"]
     end
+
+    #config.vm.synced_folder ".", "/vagrant"
 
     config.vm.provision "shell" do |s|
         s.inline = "sudo apt-get update && sudo apt-get install -y python"
