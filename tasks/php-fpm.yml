@@ -1,20 +1,20 @@
 ---
 # PHP7-FPM
 
-- name: PHP7-FPM | Install PHP7-FPM
-  apt: pkg=php7.0-fpm state=installed
+- name: PHP-FPM | Install PHP7.1-FPM
+  apt: pkg=php7.1-fpm state=installed
 
-- name: PHP7-FPM | Install Primary Configuration File
-  template: src=../files/php-fpm.conf dest=/etc/php/7.0/fpm/php-fpm.conf
+- name: PHP-FPM | Install Primary Configuration File
+  template: src=../files/php-fpm.conf dest=/etc/php/7.1/fpm/php-fpm.conf
 
-- name: PHP7-FPM | Install WWW Pool Configuration File
-  template: src=../files/php-fpm_pool_www.conf dest=/etc/php/7.0/fpm/pool.d/www.conf
-  notify: restart php7.0-fpm
+- name: PHP-FPM | Install WWW Pool Configuration File
+  template: src=../files/php-fpm_pool_www.conf dest=/etc/php/7.1/fpm/pool.d/www.conf
+  notify: restart php7.1-fpm
 
 # Update PHP.ini
 
-- name: PHP5-FPM | Install Custom PHP.ini Configurations for FPM PHP
-  ini_file: dest=/etc/php/7.0/fpm/php.ini
+- name: PHP-FPM | Install Custom PHP.ini Configurations for FPM PHP
+  ini_file: dest=/etc/php/7.1/fpm/php.ini
             section=PHP
             option={{ item.option }}
             value={{ item.value }}

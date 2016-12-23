@@ -77,7 +77,7 @@
   handlers:
     - name: restart nginx
       service: name=nginx state=restarted
-    - name: restart php7.0-fpm
-      service: name=php7.0-fpm state=restarted
+    - name: restart php7.1-fpm
+      service: name=php7.1-fpm state=restarted
     - name: restart mysql
       service: name=mysql state=restarted

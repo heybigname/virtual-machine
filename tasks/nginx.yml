@@ -8,7 +8,7 @@
   apt: pkg=nginx state=installed
 
 - name: NGINX | Copy Host Config
-  template: src=../files/nginx_site.conf dest=/etc/nginx/sites-available/{{ item.hostname }}.conf
+  template: src={{ (item.config is defined) | ternary(item.config, '../files/nginx_site.conf') }} src=../files/nginx_site.conf dest=/etc/nginx/sites-available/{{ item.hostname }}.conf
   with_items: "{{sites}}"
 
 - name: NGINX | Copy Server Config

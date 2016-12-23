@@ -11,8 +11,6 @@ Vagrant.configure("2") do |config|
         v.customize ["modifyvm", :id, "--name", "CHANGE ME BEFORE USE"]
     end
 
-    #config.vm.synced_folder ".", "/vagrant"
-
     config.vm.provision "shell" do |s|
         s.inline = "sudo apt-get update && sudo apt-get install -y python"
     end
@@ -27,7 +25,8 @@ Vagrant.configure("2") do |config|
             sites: [
                 {
                     hostname: "app.local",
-                    document_root: "/vagrant/public"
+                    document_root: "/vagrant/public",
+                    config: "./new_site.conf"
                 }
             ],
             php_configs: [
