@@ -1,11 +1,11 @@
 Ansible VM 2.1 
 ===============
 
-This virtual machine configuration is designed to have ONE application per machine. However, it does support multiple domains / sites per configuration. This virtual machine is a particularly good fit if you run Ubuntu 14.04 LTS on your servers.
+This virtual machine configuration is designed to have ONE application per machine. However, it does support multiple domains / sites per configuration. This virtual machine is a particularly good fit if you run Ubuntu 16.04 LTS on your servers.
 
 - [Ubuntu](http://www.ubuntu.com/) 16.04 Xenial 64bit
 - [NGINX](http://nginx.org/) + [PHP7-FPM](http://php-fpm.org/) _(optional)_
-- [PHP](http://php.net/) 7.0 _(optional)_
+- [PHP](http://php.net/) 7.1 _(optional)_
 - [Laravel Tools](http://laravel.com/) Laravel / Lumen / Envoy Tools _(optional)_
 - [NodeJS](http://nodejs.org/) v0.10.29 _(optional)_
 - [MailCatcher](http://mailcatcher.me/) _(optional)_
