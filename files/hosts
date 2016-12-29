@@ -1,8 +1,10 @@
 127.0.0.1	localhost
-127.0.1.1	trusty64
+127.0.0.1	xenial64
+127.0.0.1	ubuntu-xenial
+127.0.0.1	{{ hostname }}
 
 {% for host in sites %}
-127.0.0.1   {{ host.hostname }}
+127.0.0.1       {{ host.hostname }}
 {% endfor %}
 
 # The following lines are desirable for IPv6 capable hosts

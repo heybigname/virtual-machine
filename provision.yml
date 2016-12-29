@@ -8,15 +8,15 @@
     databases: []
     sites: []
     php_modules:
-      - php5.6-mysql
-      - php5.6-gd
-      - php-apc
-      - php5.6-mcrypt
-      - php5.6-curl
-      - php5.6-intl
-      - php5-memcached
-      - php5.6-mbstring
-      - php5.6-dom
+      - php7.1-mysql
+      - php7.1-gd
+      - php-apcu
+      - php7.1-mcrypt
+      - php7.1-curl
+      - php7.1-intl
+      - php-memcached
+      - php7.1-mbstring
+      - php7.1-xml
     install_db: "no"
     install_web: "no"
     install_ohmyzsh: "no"
@@ -77,7 +77,7 @@
   handlers:
     - name: restart nginx
       service: name=nginx state=restarted
-    - name: restart php5.6-fpm
-      service: name=php5.6-fpm state=restarted
+    - name: restart php7.1-fpm
+      service: name=php7.1-fpm state=restarted
     - name: restart mysql
       service: name=mysql state=restarted

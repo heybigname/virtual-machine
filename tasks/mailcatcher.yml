@@ -10,8 +10,8 @@
 - name: MailCatcher | libsqlite3-dev
   apt: pkg=libsqlite3-dev state=latest
 
-- name: MailCatcher | Install Ruby 1.9.1
-  apt: pkg=ruby1.9.1-dev state=installed
+- name: MailCatcher | Install Ruby 2.3
+  apt: pkg=ruby2.3 state=installed
 
 - name: MailCatcher | Install MailCatcher
   action: command gem install mailcatcher creates=/usr/local/bin/mailcatcher

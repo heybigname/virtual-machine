@@ -1,11 +1,11 @@
 Ansible VM 2.1 
 ===============
 
-This virtual machine configuration is designed to have ONE application per machine. However, it does support multiple domains / sites per configuration. This virtual machine is a particularly good fit if you run Ubuntu 14.04 LTS on your servers.
+This virtual machine configuration is designed to have ONE application per machine. However, it does support multiple domains / sites per configuration. This virtual machine is a particularly good fit if you run Ubuntu 16.04 LTS on your servers.
 
-- [Ubuntu](http://www.ubuntu.com/) 14.04 Trusty 64bit
-- [NGINX](http://nginx.org/) + [PHP5-FPM](http://php-fpm.org/) _(optional)_
-- [PHP](http://php.net/) 5.6 _(optional)_
+- [Ubuntu](http://www.ubuntu.com/) 16.04 Xenial 64bit
+- [NGINX](http://nginx.org/) + [PHP7-FPM](http://php-fpm.org/) _(optional)_
+- [PHP](http://php.net/) 7.1 _(optional)_
 - [Laravel Tools](http://laravel.com/) Laravel / Lumen / Envoy Tools _(optional)_
 - [NodeJS](http://nodejs.org/) v0.10.29 _(optional)_
 - [MailCatcher](http://mailcatcher.me/) _(optional)_
@@ -41,7 +41,7 @@ dbpasswd: "password"
 databases: []
 sites: []
 php_configs: []
-php_modules: ["php5-mysql", "php5-gd", "php-apc", "php5-mcrypt", "php5-curl", "php5-intl", "php5-memcached"]
+php_modules: ["php7.1-mysql", "php7.1-gd", "php-apcu", "php7.1-mcrypt", "php7.1-curl", "php7.1-intl", "php-memcached"]
 install_db: "no"
 install_web: "no"
 install_ohmyzsh: "no"
@@ -71,14 +71,13 @@ swap_size_in_mb: "1024"
 
 ```ruby
 Vagrant.configure("2") do |config|
-    config.vm.box = "trusty64"
-    config.vm.box_url = "http://cloud-images.ubuntu.com/vagrant/trusty/current/trusty-server-cloudimg-amd64-vagrant-disk1.box"
+    config.vm.box = "ubuntu/xenial64"
 
     config.vm.network :private_network, ip: "10.10.10.10"
 
     config.vm.provider :virtualbox do |v|
         v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
-        v.customize ["modifyvm", :id, "--memory", 768]
+        v.customize ["modifyvm", :id, "--memory", 1024]
         v.customize ["modifyvm", :id, "--name", "CHANGE ME BEFORE USE"]
     end
 
@@ -131,8 +130,7 @@ end
 
 ```ruby
 Vagrant.configure("2") do |config|
-    config.vm.box = "trusty64"
-    config.vm.box_url = "http://cloud-images.ubuntu.com/vagrant/trusty/current/trusty-server-cloudimg-amd64-vagrant-disk1.box"
+    config.vm.box = "ubuntu/xenial64"
 
     config.vm.network :private_network, ip: "10.10.10.10"
 
