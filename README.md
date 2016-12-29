@@ -41,7 +41,7 @@ dbpasswd: "password"
 databases: []
 sites: []
 php_configs: []
-php_modules: ["php7.0-mysql", "php7.0-gd", "php-apcu", "php7.0-mcrypt", "php7.0-curl", "php7.0-intl", "php-memcached"]
+php_modules: ["php7.1-mysql", "php7.1-gd", "php-apcu", "php7.1-mcrypt", "php7.1-curl", "php7.1-intl", "php-memcached"]
 install_db: "no"
 install_web: "no"
 install_ohmyzsh: "no"
