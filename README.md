@@ -71,8 +71,7 @@ swap_size_in_mb: "1024"
 
 ```ruby
 Vagrant.configure("2") do |config|
-    config.vm.box = "xenial64"
-    config.vm.box_url = "https://cloud-images.ubuntu.com/xenial/current/xenial-server-cloudimg-amd64-vagrant.box"
+    config.vm.box = "ubuntu/xenial64"
 
     config.vm.network :private_network, ip: "10.10.10.10"
 
@@ -131,8 +130,7 @@ end
 
 ```ruby
 Vagrant.configure("2") do |config|
-    config.vm.box = "xenial64"
-    config.vm.box_url = "https://cloud-images.ubuntu.com/xenial/current/xenial-server-cloudimg-amd64-vagrant.box"
+    config.vm.box = "ubuntu/xenial64"
 
     config.vm.network :private_network, ip: "10.10.10.10"
 
