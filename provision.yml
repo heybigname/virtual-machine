@@ -8,15 +8,15 @@
     databases: []
     sites: []
     php_modules:
-      - php7.0-mysql
-      - php7.0-gd
+      - php7.1-mysql
+      - php7.1-gd
       - php-apcu
-      - php7.0-mcrypt
-      - php7.0-curl
-      - php7.0-intl
+      - php7.1-mcrypt
+      - php7.1-curl
+      - php7.1-intl
       - php-memcached
-      - php7.0-mbstring
-      - php-xml
+      - php7.1-mbstring
+      - php7.1-xml
     install_db: "no"
     install_web: "no"
     install_ohmyzsh: "no"
