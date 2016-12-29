@@ -25,8 +25,7 @@ Vagrant.configure("2") do |config|
             sites: [
                 {
                     hostname: "app.local",
-                    document_root: "/vagrant/public",
-                    config: "./new_site.conf"
+                    document_root: "/vagrant/public"
                 }
             ],
             php_configs: [
