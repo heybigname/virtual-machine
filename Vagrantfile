@@ -36,6 +36,11 @@ Vagrant.configure("2") do |config|
                 { option: "upload_max_filesize", value: "100M" },
                 { option: "post_max_size", value: "100M" }
             ],
+            install_postgresql: "no",
+            postgresql_version: "9.5",
+            postgresql_user: "root",
+            postgresql_passwd: "password",
+            postgresql_databases: ["development"],
             install_gems: [],
             install_db: "yes",
             install_ohmyzsh: "yes",

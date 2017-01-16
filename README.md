@@ -15,6 +15,7 @@ This virtual machine configuration is designed to have ONE application per machi
 - [Java](http://java.com) _(optional)_
 - [Typesafe Activator](http://scala-lang.org) _(optional)_
 - [EventStore](http://geteventstore.com) _(optional)_
+- [Postgresql](https://www.postgresql.org/) _(optional)_
 - Site configuration defined in the [Vagrantfile](https://github.com/heybigname/ansible/blob/master/Vagrantfile)
 - Database configuration defined in the [Vagrantfile](https://github.com/heybigname/ansible/blob/master/Vagrantfile)
 - Custom PHP.ini configurations can be defined in the [Vagrantfile](https://github.com/heybigname/ansible/blob/master/Vagrantfile)
@@ -63,6 +64,11 @@ eventstore_bind_ip: "10.10.10.10",
 eventstore_http_prefix: "http://app.local:2113/",
 enable_swap: "no",
 swap_size_in_mb: "1024"
+install_postgresql: "no",
+postgresql_version: "9.5",
+postgresql_user: "root",
+postgresql_passwd: "password",
+postgresql_databases: ["development"],
 ```
 
 # Example Vagrantfiles
