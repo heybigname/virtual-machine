@@ -26,20 +26,22 @@ Vagrant.configure("2") do |config|
                 {
                     hostname: "app.local",
                     document_root: "/vagrant/app/public"
-                },
-                {
-                    hostname: "app-api.local",
-                    document_root: "/vagrant/app-api/public"
                 }
             ],
             php_configs: [
                 { option: "upload_max_filesize", value: "100M" },
                 { option: "post_max_size", value: "100M" }
             ],
+
+            install_postgresql: "yes",
+            postgresql_version: "9.5",
+            postgresql_user: "root",
+            postgresql_passwd: "password",
+            postgresql_databases: ["development"],
             install_gems: [],
-            install_db: "yes",
+            install_db: "no",
             install_ohmyzsh: "yes",
-            install_web: "yes",
+            install_web: "no",
             install_mailcatcher: "no",
             install_hhvm: "no",
             install_beanstalkd: "no",
@@ -52,7 +54,7 @@ Vagrant.configure("2") do |config|
             install_eventstore: "no",
             eventstore_version: "3.0.1",
             eventstore_bind_ip: "10.10.10.10",
-            eventstore_http_prefix: "http://app.local:2113/"
+            eventstore_http_prefix: "http://app.local:2113/",
         }
     end
 end

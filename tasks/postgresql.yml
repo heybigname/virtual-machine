@@ -1,0 +1,41 @@
+---
+# Postgresql
+
+- name: Postgresql | Install Postgresql
+  apt: name={{ item }}  state=installed
+  with_items:
+    - postgresql-{{ postgresql_version }}
+    - postgresql-contrib
+    - python-psycopg2
+
+- name: Postgresql | Create database
+  postgresql_db: name={{ item }}
+  become: true
+  become_user: postgres
+  with_items: "{{ postgresql_databases }}"
+
+- name: Postgresql | Ensure user has access to database
+  postgresql_user: db={{ item }} name={{ postgresql_user }} password={{ postgresql_passwd }} priv=ALL
+  become: true
+  become_user: postgres
+  with_items: "{{ postgresql_databases }}"
+
+- name: Postgresql | Set Locale to en_US
+  lineinfile: dest=/etc/default/locale line='LANGUAGE="en_US:en"' state=present
+
+- name: Postgresql | Set Locale to UTF-8
+  lineinfile: dest=/etc/default/locale line='LC_ALL="en_US.UTF-8"' state=present
+
+- name: Postgresql | Listen to all requests
+  lineinfile: dest=/etc/postgresql/{{ postgresql_version }}/main/postgresql.conf
+              regexp="^listen_addresses"
+              line="listen_addresses = '*'" state=present
+
+- name: Postgresql | Give vagrant access to the database instance
+  lineinfile: dest=/etc/postgresql/{{ postgresql_version }}/main/pg_hba.conf
+                 regexp='host\s+all\s+all\s+127.0.0.1/32\s+md5'
+                 line='host all all 10.10.10.1/32 md5'
+                 insertbefore=BOF
+
+- name: restart postgresql
+  service: name=postgresql state=restarted
