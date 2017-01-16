@@ -113,11 +113,6 @@ Vagrant.configure("2") do |config|
                     value: "100M"
                 }
             ],
-            install_postgresql: "no",
-            postgresql_version: "9.5",
-            postgresql_user: "root",
-            postgresql_passwd: "password",
-            postgresql_databases: ["development"],
             install_gems: ["compass", "zurb-foundation"],
             install_db: "yes",
             install_ohmyzsh: "yes",
