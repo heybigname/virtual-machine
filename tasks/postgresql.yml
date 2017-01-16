@@ -34,7 +34,7 @@
 - name: Postgresql | Give vagrant access to the database instance
   lineinfile: dest=/etc/postgresql/{{ postgresql_version }}/main/pg_hba.conf
                  regexp='host\s+all\s+all\s+127.0.0.1/32\s+md5'
-                 line='host all all 10.10.10.1/32 md5'
+                 line='host all all 0.0.0.0/0 md5'
                  insertbefore=BOF
 
 - name: restart postgresql

@@ -17,6 +17,7 @@
       - php-memcached
       - php7.1-mbstring
       - php7.1-xml
+      - php7.1-pgsql
     install_db: "no"
     install_web: "no"
     install_ohmyzsh: "no"
