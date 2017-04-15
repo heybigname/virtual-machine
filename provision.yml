@@ -30,6 +30,11 @@
     install_r: "no"
     php_configs: []
     r_packages: []
+    install_postgresql: "no"
+    postgresql_version: "9.5"
+    postgresql_user: "root"
+    postgresql_passwd: "password"
+    postgresql_databases: []
     install_java: "no"
     enable_swap: "no"
     swap_size_in_mb: 1024
