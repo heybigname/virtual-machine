@@ -2,7 +2,7 @@
 # EventStore
 
 - name: EventStore | Download
-  get_url: url=http://download.geteventstore.com/binaries/EventStore-OSS-Linux-v{{ eventstore_version }}.tar.gz dest=/vagrant/eventstore.tar.gz mode=0440
+  get_url: url=http://download.geteventstore.com/binaries/EventStore-OSS-Ubuntu-14.04-v{{ eventstore_version }}.tar.gz dest=/vagrant/eventstore.tar.gz mode=0440
 
 - name: EventStore | Extract
   unarchive: src=/vagrant/eventstore.tar.gz dest=/vagrant copy=no
