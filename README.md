@@ -1,4 +1,4 @@
-Ansible VM 3.1
+Ansible VM 3.2
 ===============
 
 This virtual machine configuration is designed to have ONE application per machine. However, it does support multiple domains / sites per configuration. This virtual machine is a particularly good fit if you run Ubuntu 16.04 LTS on your servers.
@@ -161,6 +161,10 @@ end
 Changelog
 =========
 
+
+**3.2**
+
+Completely change Event Store install to use a custom repository and apt. Remove start_eventstore script (now uses upstart).
 
 **3.1**
 

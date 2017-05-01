@@ -1,4 +1,0 @@
-#!/bin/bash
-
-cd /vagrant/eventstore
-. ./run-node.sh --ext-ip={{ eventstore_bind_ip }} --http-prefixes={{ eventstore_http_prefix }}
