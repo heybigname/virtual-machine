@@ -17,6 +17,7 @@ This virtual machine configuration is designed to have ONE application per machi
 - [EventStore](http://geteventstore.com) _(optional)_
 - [Postgresql](https://www.postgresql.org/) _(optional)_
 - Site configuration defined in the [Vagrantfile](https://github.com/heybigname/ansible/blob/master/Vagrantfile)
+    - custom nginx site configuration is optional
 - Database configuration defined in the [Vagrantfile](https://github.com/heybigname/ansible/blob/master/Vagrantfile)
 - Custom PHP.ini configurations can be defined in the [Vagrantfile](https://github.com/heybigname/ansible/blob/master/Vagrantfile)
 - Arbitrary Ruby Gems can be installed from the [Vagrantfile](https://github.com/heybigname/ansible/blob/master/Vagrantfile)
@@ -100,7 +101,8 @@ Vagrant.configure("2") do |config|
                     document_root: "/vagrant/site/public"
                 }, {
                     hostname: "app2.local",
-                    document_root: "/vagrant/site2/public2"
+                    document_root: "/vagrant/site2/public2",
+                    config: "app2_nginx.conf"
                 }
             ],
             php_configs: [
