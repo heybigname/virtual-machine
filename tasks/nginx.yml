@@ -7,9 +7,15 @@
 - name: NGINX | Install NGINX
   apt: pkg=nginx state=installed
 
-- name: NGINX | Copy Host Config
-  template: src={{ (item.config is defined) | ternary('../../'+item.config, '../files/nginx_site.conf') }} dest=/etc/nginx/sites-available/{{ item.hostname }}.conf
-  with_items: "{{sites}}"
+- name: NGINX | Copy Default Host Config
+  template: src=../files/nginx_site.conf dest=/etc/nginx/sites-available/{{ item.hostname }}.conf
+  with_items: "{{ sites }}"
+  when: item.config is undefined
+
+- name: NGINX | Copy Custom Host Config
+  template: src={{ '../../'+item.config }} dest=/etc/nginx/sites-available/{{ item.hostname }}.conf
+  with_items: "{{ sites }}"
+  when: item.config is defined
 
 - name: NGINX | Copy Server Config
   template: src=../files/nginx.conf dest=/etc/nginx/nginx.conf
