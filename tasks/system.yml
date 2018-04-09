@@ -9,7 +9,7 @@
   apt: update_cache=yes
 
 - name: System | Install Various Packages
-  apt: pkg={{ item }} state=installed
+  apt: pkg={{ item }} state=present
   with_items:
     - unzip
 
