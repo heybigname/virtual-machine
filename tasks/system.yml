@@ -16,33 +16,33 @@
 # Python Requirements
 
 - name: System | Install python-software-properties
-  apt: pkg=python-software-properties state=installed
+  apt: pkg=python-software-properties state=present
 
 - name: System | Install Build-Essentials
-  apt: pkg=build-essential state=installed
+  apt: pkg=build-essential state=present
 
 # ACL - for easy access control management
 
 - name: System | Install ACL
-  apt: pkg=acl state=installed
+  apt: pkg=acl state=present
 
 # cURL
 
 - name: System | Install cURL
-  apt: pkg=curl state=installed
+  apt: pkg=curl state=present
 
 # Git
 
 - name: System | Install Git
-  apt: pkg=git-core state=installed
+  apt: pkg=git-core state=present
 
 # Ruby
 
 - name: System | Install Ruby Development Headers
-  apt: pkg=ruby2.3 state=installed
+  apt: pkg=ruby2.3 state=present
 
 - name: System | Install Ruby Gems Package
-  apt: pkg=rubygems-integration state=installed
+  apt: pkg=rubygems-integration state=present
 
 # Host Configuration
 

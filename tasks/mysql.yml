@@ -2,10 +2,10 @@
 # MySQL
 
 - name: MySQL | Install MySQL
-  apt: pkg=mysql-server state=installed
+  apt: pkg=mysql-server state=present
 
 - name: MySQL | Install python-mysqldb
-  apt: pkg=python-mysqldb state=installed
+  apt: pkg=python-mysqldb state=present
 
 - name: MySQL | Create User
   mysql_user: name={{ dbuser }} host={{ item }} password={{ dbpasswd }} priv=*.*:ALL,GRANT

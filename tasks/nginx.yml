@@ -5,7 +5,7 @@
   apt: pkg=apache2 state=absent purge=yes
 
 - name: NGINX | Install NGINX
-  apt: pkg=nginx state=installed
+  apt: pkg=nginx state=present
 
 - name: NGINX | Copy Default Host Config
   template: src=../files/nginx_site.conf dest=/etc/nginx/sites-available/{{ item.hostname }}.conf

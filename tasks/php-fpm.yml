@@ -2,7 +2,7 @@
 # PHP7-FPM
 
 - name: PHP-FPM | Install PHP7.1-FPM
-  apt: pkg=php7.1-fpm state=installed
+  apt: pkg=php7.1-fpm state=present
 
 - name: PHP-FPM | Install Primary Configuration File
   template: src=../files/php-fpm.conf dest=/etc/php/7.1/fpm/php-fpm.conf

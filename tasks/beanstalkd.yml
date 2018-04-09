@@ -2,4 +2,4 @@
 # Beanstalkd
 
 - name: Beanstalkd | Install Beanstalkd
-  apt: pkg=beanstalkd state=installed
+  apt: pkg=beanstalkd state=present
