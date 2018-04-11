@@ -12,6 +12,7 @@
   apt: pkg={{ item }} state=present
   with_items:
     - unzip
+    - supervisor
 
 # Python Requirements
 
