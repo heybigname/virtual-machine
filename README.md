@@ -1,4 +1,4 @@
-Ansible VM 3.2
+Ansible VM 3.3
 ===============
 
 This virtual machine configuration is designed to have ONE application per machine. However, it does support multiple domains / sites per configuration. This virtual machine is a particularly good fit if you run Ubuntu 16.04 LTS on your servers.
@@ -63,13 +63,14 @@ install_eventstore: "no",
 eventstore_version: "3.0.1",
 eventstore_bind_ip: "10.10.10.10",
 eventstore_http_prefix: "http://app.local:2113/",
-enable_swap: "no",
+enable_swap: "yes",
 swap_size_in_mb: "1024"
 install_postgresql: "no",
 postgresql_version: "9.5",
 postgresql_user: "root",
 postgresql_passwd: "password",
 postgresql_databases: ["development"],
+install_rabbit_mq: "no",
 ```
 
 # Example Vagrantfiles
@@ -163,6 +164,9 @@ end
 Changelog
 =========
 
+**3.3**
+
+Fix some small bugs and add rabbitmq support.
 
 **3.2**
 
