@@ -11,7 +11,6 @@
       - php7.2-mysql
       - php7.2-gd
       - php-apcu
-      - php7.2-mcrypt
       - php7.2-curl
       - php7.2-intl
       - php-memcached
