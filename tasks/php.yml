@@ -4,8 +4,8 @@
 - name: PHP | Install Ondrej PHP PPA
   apt_repository: repo='ppa:ondrej/php' update_cache=yes
 
-- name: PHP | Install PHP 7.1
-  apt: pkg=php7.1 state=latest
+- name: PHP | Install PHP 7.2
+  apt: pkg=php7.2 state=latest
   tags: common
 
 - name: PHP | Install PHP Modules
@@ -25,7 +25,7 @@
 # Update PHP.ini
 
 - name: PHP | Install Custom PHP.ini Configurations for CLI PHP
-  ini_file: dest=/etc/php/7.1/cli/php.ini
+  ini_file: dest=/etc/php/7.2/cli/php.ini
             section=PHP
             option="{{ item.option }}"
             value="{{ item.value }}"

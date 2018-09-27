@@ -8,16 +8,15 @@
     databases: []
     sites: []
     php_modules:
-      - php7.1-mysql
-      - php7.1-gd
+      - php7.2-mysql
+      - php7.2-gd
       - php-apcu
-      - php7.1-mcrypt
-      - php7.1-curl
-      - php7.1-intl
+      - php7.2-curl
+      - php7.2-intl
       - php-memcached
-      - php7.1-mbstring
-      - php7.1-xml
-      - php7.1-pgsql
+      - php7.2-mbstring
+      - php7.2-xml
+      - php7.2-pgsql
     install_db: "no"
     install_web: "no"
     install_ohmyzsh: "no"
@@ -36,7 +35,7 @@
     postgresql_passwd: "password"
     postgresql_databases: []
     install_java: "no"
-    enable_swap: "no"
+    enable_swap: "yes"
     swap_size_in_mb: 1024
     install_typesafe_activator: "no"
     typesafe_activator_version: "1.2.10"
@@ -88,7 +87,7 @@
   handlers:
     - name: restart nginx
       service: name=nginx state=restarted
-    - name: restart php7.1-fpm
-      service: name=php7.1-fpm state=restarted
+    - name: restart php7.2-fpm
+      service: name=php7.2-fpm state=restarted
     - name: restart mysql
       service: name=mysql state=restarted
