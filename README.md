@@ -1,11 +1,11 @@
-Ansible VM 3.3
+Ansible VM 4.0
 ===============
 
 This virtual machine configuration is designed to have ONE application per machine. However, it does support multiple domains / sites per configuration. This virtual machine is a particularly good fit if you run Ubuntu 16.04 LTS on your servers.
 
 - [Ubuntu](http://www.ubuntu.com/) 16.04 Xenial 64bit
 - [NGINX](http://nginx.org/) + [PHP7-FPM](http://php-fpm.org/) _(optional)_
-- [PHP](http://php.net/) 7.1 _(optional)_
+- [PHP](http://php.net/) 7.2 _(optional)_
 - [Laravel Tools](http://laravel.com/) Laravel / Lumen / Envoy Tools _(optional)_
 - [NodeJS](http://nodejs.org/) v0.10.29 _(optional)_
 - [MailCatcher](http://mailcatcher.me/) _(optional)_
@@ -43,7 +43,7 @@ dbpasswd: "password"
 databases: []
 sites: []
 php_configs: []
-php_modules: ["php7.1-mysql", "php7.1-gd", "php-apcu", "php7.1-mcrypt", "php7.1-curl", "php7.1-intl", "php-memcached"]
+php_modules: ["php7.2-mysql", "php7.2-gd", "php-apcu", "php7.2-curl", "php7.2-intl", "php-memcached"]
 install_db: "no"
 install_web: "no"
 install_ohmyzsh: "no"
@@ -163,6 +163,10 @@ end
 
 Changelog
 =========
+
+**4.0**
+
+Upgrade PHP 7.1 to 7.2.
 
 **3.3**
 
