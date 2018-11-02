@@ -1,19 +1,19 @@
 ---
 # MySQL
 
-- name: MySQL | Add MySQL 8 ubuntu xenial repository
-  apt_repository:
-    repo: "deb http://repo.mysql.com/apt/ubuntu xenial mysql-8.0"
-    state: present
-
-- name: MySQL | Add MySQL 8 apt key
-  apt_key: keyserver=pgp.mit.edu id=5072E1F5
-
-- name: MySQL | Update and upgrade apt packages
-  become: true
-  apt:
-    upgrade: yes
-    update_cache: yes
+#- name: MySQL | Add MySQL 8 ubuntu xenial repository
+#  apt_repository:
+#    repo: "deb http://repo.mysql.com/apt/ubuntu xenial mysql-8.0"
+#    state: present
+#
+#- name: MySQL | Add MySQL 8 apt key
+#  apt_key: keyserver=pgp.mit.edu id=5072E1F5
+#
+#- name: MySQL | Update and upgrade apt packages
+#  become: true
+#  apt:
+#    upgrade: yes
+#    update_cache: yes
 
 - name: MySQL | Install MySQL
   apt: pkg=mysql-server state=present
@@ -21,15 +21,18 @@
 - name: MySQL | Install python-mysqldb
   apt: pkg=python-mysqldb state=present
 
-#- name: MySQL | Copy Config File
-#  template: src=../files/my.cnf dest=/etc/mysql/my.cnf owner=root mode=0600
-#  notify: restart mysql
+- name: MySQL | Copy Config File
+  template: src=../files/my.cnf dest=/etc/mysql/my.cnf owner=root mode=0600
+  notify: restart mysql
 
 - name: MySQL | Create User
   mysql_user: name={{ dbuser }} host="%" password={{ dbpasswd }} priv="*.*:ALL"
 
-#- name: MySQL | Create User
-#  mysql_user: name={{ dbuser }} host="127.0.0.1" password={{ dbpasswd }} priv="*.*:ALL"
+- name: MySQL | Create User
+  mysql_user: name={{ dbuser }} host="127.0.0.1" password={{ dbpasswd }} priv="*.*:ALL"
+
+- name: MySQL | Create User
+  mysql_user: name={{ dbuser }} host="localhost" password={{ dbpasswd }} priv="*.*:ALL"
 
 - name: MySQL | Create Databases
   mysql_db: name={{ item }} state=present login_password={{ dbpasswd }} login_user={{ dbuser }}
