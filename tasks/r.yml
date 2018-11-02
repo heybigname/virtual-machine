@@ -5,10 +5,9 @@
   apt_repository: repo='ppa:marutter/rrutter' update_cache=yes
 
 - name: R | Install R
-  apt: pkg={{ item }} state=latest force=yes
-  with_items:
-    - r-base
-    - r-base-dev
+  apt:
+    name: ['r-base', 'r-base-dev']
+    state: latest
 
 - name: R | Install R Packages
   command: R -e "install.packages(\"{{ item }}\", dependencies = TRUE, repos=\"http://cran.r-project.org\")"

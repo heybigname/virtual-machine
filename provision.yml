@@ -7,16 +7,7 @@
     dbpasswd: "password"
     databases: []
     sites: []
-    php_modules:
-      - php7.2-mysql
-      - php7.2-gd
-      - php-apcu
-      - php7.2-curl
-      - php7.2-intl
-      - php-memcached
-      - php7.2-mbstring
-      - php7.2-xml
-      - php7.2-pgsql
+    php_modules: ['php7.2-mysql', 'php7.2-gd', 'php-apcu', 'php7.2-curl', 'php7.2-intl', 'php-memcached', 'php7.2-mbstring', 'php7.2-xml', 'php7.2-pgsql']
     install_db: "no"
     install_web: "no"
     install_ohmyzsh: "no"

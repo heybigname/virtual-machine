@@ -9,9 +9,9 @@
   tags: common
 
 - name: PHP | Install PHP Modules
-  apt: pkg={{ item }} state=latest
-  tags: common
-  with_items: "{{php_modules}}"
+  apt:
+    name: "{{php_modules}}"
+    state: latest
 
 # Composer
 
@@ -19,7 +19,13 @@
   register: composer_folder
 
 - name: PHP | Install Composer
-  shell: curl -sS https://getcomposer.org/installer | php && mv composer.phar /usr/local/bin/composer creates=/usr/local/bin/composer
+  get_url:
+    url: https://getcomposer.org/installer
+    dest: /tmp
+    mode: 0440
+
+- name: PHP | Install Composer
+  shell: php /tmp/installer && mv composer.phar /usr/local/bin/composer creates=/usr/local/bin/composer
   when: composer_folder.stat.isdir is not defined
 
 # Update PHP.ini

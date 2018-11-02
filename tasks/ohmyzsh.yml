@@ -2,11 +2,10 @@
 # oh-my-zsh
 
 - name: oh-my-zsh | Install oh-my-zsh
-  apt: name={{ item }}  state=latest update_cache=yes
-  with_items:
-   - git
-   - zsh
-   - git-core
+  apt:
+    name: ['git', 'zsh', 'git-core']
+    state: latest
+    update_cache: yes
 
 - name: oh-my-zsh | Clone down repository
   git: repo=https://github.com/robbyrussell/oh-my-zsh.git dest=/home/vagrant/.oh-my-zsh

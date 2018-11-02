@@ -2,11 +2,9 @@
 # Postgresql
 
 - name: Postgresql | Install Postgresql
-  apt: name={{ item }}  state=present
-  with_items:
-    - postgresql-{{ postgresql_version }}
-    - postgresql-contrib
-    - python-psycopg2
+  apt:
+    name: ["postgresql-{{ postgresql_version }}", 'postgresql-contrib', 'python-psycopg2']
+    state: present
 
 - name: Postgresql | Create database
   postgresql_db: name={{ item }}
