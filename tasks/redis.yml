@@ -6,3 +6,9 @@
 
 - name: Redis | Install Redis
   apt: pkg=redis-server state=latest force=yes
+
+- name: Redis | Enable with systemd
+  systemd:
+    name: redis-server
+    enabled: yes
+    state: started
