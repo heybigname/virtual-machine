@@ -1,168 +1,115 @@
-Ansible VM 4.0
+PHP Development Virtual Machine 5.0
 ===============
 
-This virtual machine configuration is designed to have ONE application per machine. However, it does support multiple domains / sites per configuration. This virtual machine is a particularly good fit if you run Ubuntu 16.04 LTS on your servers.
+This virtual machine configuration is designed to have ONE application per machine. However, it does support multiple domains / sites per configuration. This virtual machine is a particularly good fit if you run Ubuntu on your servers.
 
-- [Ubuntu](http://www.ubuntu.com/) 16.04 Xenial 64bit
+Ansible does not run on Windows but this configuration installs and runs it within the client machine instead of the Windows host so it is now Windows compatible.
+
+- [Ubuntu](http://www.ubuntu.com/) 
 - [NGINX](http://nginx.org/) + [PHP7-FPM](http://php-fpm.org/) _(optional)_
-- [PHP](http://php.net/) 7.2 _(optional)_
-- [Laravel Tools](http://laravel.com/) Laravel / Lumen / Envoy Tools _(optional)_
-- [NodeJS](http://nodejs.org/) v0.10.29 _(optional)_
-- [MailCatcher](http://mailcatcher.me/) _(optional)_
+- [PHP](http://php.net/) 7.3 _(optional)_
+- [NodeJS](http://nodejs.org/) _(optional)_
 - [Beanstalkd](http://kr.github.io/beanstalkd/) _(optional)_
 - [Redis](http://redis.io) _(optional)_
-- [R](http://r-project.org) _(optional)_
-- [Java](http://java.com) _(optional)_
-- [Typesafe Activator](http://scala-lang.org) _(optional)_
-- [EventStore](http://geteventstore.com) _(optional)_
+- [MySQL](https://mysql.com) _(optional)_
 - [Postgresql](https://www.postgresql.org/) _(optional)_
-- Site configuration defined in the [Vagrantfile](https://github.com/heybigname/ansible/blob/master/Vagrantfile)
-    - custom nginx site configuration is optional
-- Database configuration defined in the [Vagrantfile](https://github.com/heybigname/ansible/blob/master/Vagrantfile)
-- Custom PHP.ini configurations can be defined in the [Vagrantfile](https://github.com/heybigname/ansible/blob/master/Vagrantfile)
-- Arbitrary Ruby Gems can be installed from the [Vagrantfile](https://github.com/heybigname/ansible/blob/master/Vagrantfile)
+- [RabbitMQ](https://www.rabbitmq.com/) _(optional)_
+
+- site configuration defined in the [Vagrantfile](https://github.com/heybigname/virtual-machine/blob/master/Vagrantfile)
+- custom NGINX site configuration is optional
+- database configuration defined in the [Vagrantfile](https://github.com/heybigname/virtual-machine/blob/master/Vagrantfile)
+- custom PHP.ini configurations can be defined in the [Vagrantfile](https://github.com/heybigname/virtual-machine/blob/master/Vagrantfile)
+- arbitrary Ruby Gems can be installed from the [Vagrantfile](https://github.com/heybigname/virtual-machine/blob/master/Vagrantfile)
 
 # Usage
 
-1. Bring this repo into your project as the ansible/ folder in the root. You could just copy it there or add it as a submodule: `git submodule add git@github.com:heybigname/ansible.git`
-2. Copy the [Vagrantfile](https://github.com/heybigname/ansible/blob/master/Vagrantfile) into your application root
-3. Modify your [Vagrantfile](https://github.com/heybigname/ansible/blob/master/Vagrantfile)
+1. Bring this repo into your project as the virtual-machine/ (optional) folder in the root. You could just copy it there or add it as a submodule: `git submodule add git@github.com:heybigname/virtual-machine.git`
+2. Copy the [Vagrantfile](https://github.com/heybigname/virtual-machine/blob/master/Vagrantfile) into your repository root folder and modify it.
     - set the name for the box (the part that says CHANGE ME)
+    - change Vagrantfile SSH key synced folders line so that ~/.ssh is your host's ssh folder
+3. Copy the [vm_config.json](https://github.com/heybigname/virtual-machine/blob/master/vm_config.json) file into your repository root folder and modify it.
     - configure your hostname, database details, site details, etc
-4. Install [Vagrant](http://vagrantup.com), [VirtualBox](https://www.virtualbox.org/), and [Ansible](http://www.ansible.com/home).
+4. Install [Vagrant](http://vagrantup.com) and [VirtualBox](https://www.virtualbox.org/).
 5. Just run `vagrant up`
 
 # List of Options
 
 Here is a list of options and their default values.
 
-```ruby
-hostname: "dev"
-dbuser: "root"
-dbpasswd: "password"
-databases: []
-sites: []
-php_configs: []
-php_modules: ["php7.2-mysql", "php7.2-gd", "php-apcu", "php7.2-curl", "php7.2-intl", "php-memcached"]
-install_db: "no"
-install_web: "no"
-install_ohmyzsh: "no"
-install_laravel_tools: "no"
-install_hhvm: "no"
-install_mailcatcher: "no"
-install_beanstalkd: "no"
-install_redis: "no"
-install_javascript_build_system: "no"
-install_gems: []
-install_r: "no"
-r_packages: []
-install_java: "no"
-install_typesafe_activator: "no"
-typesafe_activator_version: "1.2.10"
-install_eventstore: "no",
-eventstore_version: "3.0.1",
-eventstore_bind_ip: "10.10.10.10",
-eventstore_http_prefix: "http://app.local:2113/",
-enable_swap: "yes",
-swap_size_in_mb: "1024"
-install_postgresql: "no",
-postgresql_version: "9.5",
-postgresql_user: "root",
-postgresql_passwd: "password",
-postgresql_databases: ["development"],
-install_rabbit_mq: "no",
+```json
+{
+    "hostname": "dev",
+    "dbuser": "root",
+    "dbpasswd": "password",
+    "databases": [],
+    "sites": [],
+    "php_configs": [],
+    "php_modules": ["php7.3-mysql", "php7.3-gd", "php-apcu", "php7.3-curl", "php7.3-intl", "php-memcached"],
+    "install_db": "no",
+    "install_web": "no",
+    "install_ohmyzsh": "no",
+    "install_beanstalkd": "no",
+    "install_redis": "no",
+    "install_javascript_build_system": "no",
+    "install_gems": [],
+    "enable_swap": "yes",
+    "swap_size_in_mb": "1024",
+    "install_postgresql": "no",
+    "postgresql_version": "9.5",
+    "postgresql_user": "root",
+    "postgresql_passwd": "password",
+    "postgresql_databases": ["development"],
+    "install_rabbit_mq": "no"
+}
 ```
 
-# Example Vagrantfiles
-
-**PHP / NGINX**
+# Example vm_config.json
 
 ```ruby
-Vagrant.configure("2") do |config|
-    config.vm.box = "ubuntu/xenial64"
-
-    config.vm.network :private_network, ip: "10.10.10.10"
-
-    config.vm.provider :virtualbox do |v|
-        v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
-        v.customize ["modifyvm", :id, "--memory", 1024]
-        v.customize ["modifyvm", :id, "--name", "CHANGE ME BEFORE USE"]
-    end
-
-    config.vm.provision "ansible" do |ansible|
-        ansible.playbook = "ansible/provision.yml"
-        ansible.extra_vars = {
-            hostname: "dev",
-            dbuser: "mydbuser",
-            dbpasswd: "password",
-            databases: ["development"],
-            sites: [
-                {
-                    hostname: "app.local",
-                    document_root: "/vagrant/site/public"
-                }, {
-                    hostname: "app2.local",
-                    document_root: "/vagrant/site2/public2",
-                    config: "app2_nginx.conf"
-                }
-            ],
-            php_configs: [
-                {
-                    option: "upload_max_filesize",
-                    value: "100M"
-                },
-                {
-                    option: "post_max_size",
-                    value: "100M"
-                }
-            ],
-            install_gems: ["compass", "zurb-foundation"],
-            install_db: "yes",
-            install_ohmyzsh: "yes",
-            install_web: "yes",
-            install_laravel_tools: "yes",
-            install_mailcatcher: "no",
-            install_hhvm: "yes",
-            install_beanstalkd: "no",
-            install_redis: "no",
-            install_javascript_build_system: "no",
-            install_r: "no",
-            enable_swap: "no",
-            swap_size_in_mb: "1024",
-            r_packages: []
-        }
-    end
-end
-```
-
-**EventStore**
-
-```ruby
-Vagrant.configure("2") do |config|
-    config.vm.box = "ubuntu/xenial64"
-
-    config.vm.network :private_network, ip: "10.10.10.10"
-
-    config.vm.provider :virtualbox do |v|
-        v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
-        v.customize ["modifyvm", :id, "--memory", 1024]
-        v.customize ["modifyvm", :id, "--name", "CHANGE ME BEFORE USE"]
-    end
-
-    config.vm.provision "ansible" do |ansible|
-        ansible.playbook = "ansible/provision.yml"
-        ansible.extra_vars = {
-            install_eventstore: "yes",
-            eventstore_version: "3.0.1",
-            eventstore_bind_ip: "10.10.10.10",
-            eventstore_http_prefix: "http://app.local:2113/"
-        }
-    end
-end
+{
+  "hostname": "myhostname",
+  "dbuser": "root",
+  "dbpasswd": "password",
+  "databases": [
+    "development",
+    "testing"
+  ],
+  "sites": [
+    {
+      "hostname": "app.local",
+      "document_root": "/vagrant/public"
+    }
+  ],
+  "php_configs": [
+    {
+      "option": "upload_max_filesize",
+      "value": "100M"
+    },
+    {
+      "option": "post_max_size",
+      "value": "100M"
+    }
+  ],
+  "install_db": "yes",
+  "install_ohmyzsh": "yes",
+  "install_web": "yes",
+  "install_redis": "yes",
+  "install_javascript_build_system": "yes",
+  "enable_swap": "yes",
+  "swap_size_in_mb": "1024"
+}
 ```
 
 Changelog
 =========
+
+**5.0**
+
+- Repository has been renamed from 'ansible' to 'virtual-machine'
+- Ansible now runs within the virtual machine making this setup compatible with Windows.
+- Removed a number of features including event store, java, scala, R, hhvm, and mailcatcher.
+- Provisioning instructions are handled in the Vagrantfile and options are now handled in the vm_options.json file.
+- Upgrade PHP to 7.3 (intend for this to be configurable)
 
 **4.0**
 
@@ -171,69 +118,3 @@ Upgrade PHP 7.1 to 7.2.
 **3.3**
 
 Fix some small bugs and add rabbitmq support.
-
-**3.2**
-
-Completely change Event Store install to use a custom repository and apt. Remove start_eventstore script (now uses upstart).
-
-**3.1**
-
-Make a fix for Event Store download. Their file naming convention changed.
-
-**3.0**
-
-Upgrade Ubuntu to 16.04 and PHP to 7.1
-
-**2.1**
-
-Add option to install Laravel Tools.
-
-**2.0**
-
-Improved EventStore configuration, keys are not backwards-compatible.
-
-**1.12**
-
-Added optional swap creation
-
-**1.11**
-
-Change Scala to Typesafe Activator
-Add EventStore 
-
-**1.10**
-
-Updated PHP from 5.5 to 5.6
-
-**1.9**
-
-Change implementation of PHP configurations
-
-**1.8**
-
-Add Java / Scala Activator support.
-
-**1.7**
-
-Allow installation of R and R packages. Created default values for every option, so no more errors when you upgrade.
-
-**1.6**
-
-Allow installation of Gems and custom PHP.ini declarations from Vagrantfile.
-
-**1.5**
-
-Add redis as an optional package
-
-**1.4**
-
-Add beanstalkd as an optional package
-change zsh theme
-
-**1.3**
-
-Add Mailcatcher to Upstart
-
-**1.2**
-
-Added oh-my-zsh configuration (got tired of bash...)

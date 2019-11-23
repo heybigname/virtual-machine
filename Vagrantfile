@@ -11,54 +11,25 @@ Vagrant.configure("2") do |config|
         v.customize ["modifyvm", :id, "--name", "CHANGE ME BEFORE USE"]
     end
 
-    config.vm.provision "shell" do |s|
-        s.inline = "sudo apt-get update && sudo apt-get install -y python"
-    end
+    # set up ssh for inside-machine ansible. Change ~/.ssh to your host's ssh keys path.
+    config.vm.synced_folder ".", "/vagrant"
+    config.vm.synced_folder "~/.ssh", "/home/vagrant/ssh-host"
 
-    config.vm.provision "ansible" do |ansible|
-        ansible.playbook = "ansible/provision.yml"
-        ansible.extra_vars = {
-            hostname: "dev",
-            dbuser: "root",
-            dbpasswd: "password",
-            databases: ["development"],
-            sites: [
-                {
-                    hostname: "app.local",
-                    document_root: "/vagrant/app/public"
-                },
-                {
-                    hostname: "app-api.local",
-                    document_root: "/vagrant/app-api/public"
-                }
-            ],
-            php_configs: [
-                { option: "upload_max_filesize", value: "100M" },
-                { option: "post_max_size", value: "100M" }
-            ],
-            install_postgresql: "no",
-            postgresql_version: "9.5",
-            postgresql_user: "root",
-            postgresql_passwd: "password",
-            postgresql_databases: ["development"],
-            install_gems: [],
-            install_db: "yes",
-            install_ohmyzsh: "yes",
-            install_web: "yes",
-            install_mailcatcher: "no",
-            install_hhvm: "no",
-            install_beanstalkd: "no",
-            install_redis: "no",
-            install_javascript_build_system: "no",
-            install_r: "no",
-            install_rabbit_mq: "no",
-            r_packages: [],
-            enable_swap: "yes",
-            swap_size_in_mb: "1024",
-            install_eventstore: "no",
-            eventstore_version: "3.0.1",
-            eventstore_bind_ip: "10.10.10.10",
-            eventstore_http_prefix: "http://app.local:2113/"
-        }
-    end
+    # install ansible inside the machine then provision with it
+    # provisioning configuration is vm_config.json
+    config.vm.provision "shell", inline: <<-SHELL
+        sudo apt-get update -y
+        sudo apt-get install -y software-properties-common
+        sudo apt-get install -y python
+        sudo apt-add-repository ppa:ansible/ansible
+        sudo apt-get update -y
+        sudo apt-get install -y ansible
+        cp /home/vagrant/ssh-host/* /home/vagrant/.ssh/
+        ansible-playbook -i /vagrant/virtual-machine/hosts.ini /vagrant/virtual-machine/provision.yml --extra-vars="@/vagrant/vm_config.json"
+    SHELL
+
+    # perform any additional provisioning here
+    config.vm.provision "shell", inline: <<-SHELL
+        cd /vagrant
+    SHELL
 end

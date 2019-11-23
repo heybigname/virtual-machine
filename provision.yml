@@ -7,34 +7,22 @@
     dbpasswd: "password"
     databases: []
     sites: []
-    php_modules: ['php7.2-mysql', 'php7.2-gd', 'php-apcu', 'php7.2-curl', 'php7.2-intl', 'php-memcached', 'php7.2-mbstring', 'php7.2-xml', 'php7.2-pgsql', 'php7.2-dev']
+    php_modules: ['php7.3-mysql', 'php7.3-gd', 'php-apcu', 'php7.3-curl', 'php7.3-intl', 'php-memcached', 'php7.3-mbstring', 'php7.3-xml', 'php7.3-pgsql', 'php7.3-dev']
     install_db: "no"
     install_web: "no"
     install_ohmyzsh: "no"
-    install_hhvm: "no"
-    install_mailcatcher: "no"
     install_beanstalkd: "no"
     install_redis: "no"
     install_javascript_build_system: "no"
     install_gems: []
-    install_r: "no"
     php_configs: []
-    r_packages: []
     install_postgresql: "no"
     postgresql_version: "9.5"
     postgresql_user: "root"
     postgresql_passwd: "password"
     postgresql_databases: []
-    install_java: "no"
     enable_swap: "yes"
     swap_size_in_mb: 1024
-    install_typesafe_activator: "no"
-    typesafe_activator_version: "1.2.10"
-    install_eventstore: "no"
-    eventstore_version: "3.0.1"
-    eventstore_bind_ip: "10.10.10.10"
-    eventstore_http_prefix: "http://app.local:2113/"
-    install_laravel_tools: "no"
     install_rabbit_mq: "no"
   tasks:
     - include: tasks/system.yml
@@ -48,10 +36,6 @@
       when: install_web == "yes"
     - include: tasks/nginx.yml
       when: install_web == "yes"
-    - include: tasks/hhvm.yml
-      when: install_hhvm == "yes"
-    - include: tasks/mailcatcher.yml
-      when: install_mailcatcher == "yes"
     - include: tasks/beanstalkd.yml
       when: install_beanstalkd == "yes"
     - include: tasks/nodejs.yml
@@ -59,18 +43,8 @@
     - include: tasks/redis.yml
       when: install_redis == "yes"
     - include: tasks/ruby.yml
-    - include: tasks/r.yml
-      when: install_r == "yes"
-    - include: tasks/java.yml
-      when: install_java == "yes"
     - include: tasks/swap.yml
       when: enable_swap == "yes"
-    - include: tasks/laravel-tools.yml
-      when: install_laravel_tools == "yes"
-    - include: tasks/typesafe_activator.yml
-      when: install_typesafe_activator == "yes"
-    - include: tasks/eventstore.yml
-      when: install_eventstore == "yes"
     - include: tasks/postgresql.yml
       when: install_postgresql == "yes"
     - include: tasks/rabbitmq.yml
@@ -78,7 +52,7 @@
   handlers:
     - name: restart nginx
       service: name=nginx state=restarted
-    - name: restart php7.2-fpm
-      service: name=php7.2-fpm state=restarted
+    - name: restart php7.3-fpm
+      service: name=php7.3-fpm state=restarted
     - name: restart mysql
       service: name=mysql state=restarted
