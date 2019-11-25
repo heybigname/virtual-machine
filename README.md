@@ -16,11 +16,11 @@ Ansible does not run on Windows but this configuration installs and runs it with
 - [RabbitMQ](https://www.rabbitmq.com/) _(optional)_
 - [Supervisord](http://supervisord.org/) 
 
-- site configuration defined in the [Vagrantfile](https://github.com/heybigname/virtual-machine/blob/master/Vagrantfile)
+- site configuration defined in [vm_config.json](https://github.com/heybigname/virtual-machine/blob/master/vm_config.json)
 - custom NGINX site configuration is optional
-- database configuration defined in the [Vagrantfile](https://github.com/heybigname/virtual-machine/blob/master/Vagrantfile)
-- custom PHP.ini configurations can be defined in the [Vagrantfile](https://github.com/heybigname/virtual-machine/blob/master/Vagrantfile)
-- arbitrary Ruby Gems can be installed from the [Vagrantfile](https://github.com/heybigname/virtual-machine/blob/master/Vagrantfile)
+- database configuration defined in [vm_config.json](https://github.com/heybigname/virtual-machine/blob/master/vm_config.json)
+- custom PHP.ini configurations can be defined in [vm_config.json](https://github.com/heybigname/virtual-machine/blob/master/vm_config.json)
+- arbitrary Ruby Gems can be installed from [vm_config.json](https://github.com/heybigname/virtual-machine/blob/master/vm_config.json)
 
 # Usage
 
