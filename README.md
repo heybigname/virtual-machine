@@ -7,13 +7,14 @@ Ansible does not run on Windows but this configuration installs and runs it with
 
 - [Ubuntu](http://www.ubuntu.com/) 
 - [NGINX](http://nginx.org/) + [PHP7-FPM](http://php-fpm.org/) _(optional)_
-- [PHP](http://php.net/) 7.3 _(optional)_
+- [PHP](http://php.net/) _(optional)_
 - [NodeJS](http://nodejs.org/) _(optional)_
 - [Beanstalkd](http://kr.github.io/beanstalkd/) _(optional)_
 - [Redis](http://redis.io) _(optional)_
 - [MySQL](https://mysql.com) _(optional)_
 - [Postgresql](https://www.postgresql.org/) _(optional)_
 - [RabbitMQ](https://www.rabbitmq.com/) _(optional)_
+- [Supervisord](http://supervisord.org/) 
 
 - site configuration defined in the [Vagrantfile](https://github.com/heybigname/virtual-machine/blob/master/Vagrantfile)
 - custom NGINX site configuration is optional
@@ -44,8 +45,9 @@ Here is a list of options and their default values.
     "databases": [],
     "sites": [],
     "php_configs": [],
-    "php_modules": ["php7.3-mysql", "php7.3-gd", "php-apcu", "php7.3-curl", "php7.3-intl", "php-memcached"],
+    "php_modules": ["php{{ php_version }}-mysql", "php{{ php_version }}-gd", "php-apcu", "php{{ php_version }}-curl", "php{{ php_version }}-intl", "php-memcached"],
     "install_db": "no",
+    "php_version": "7.3",
     "install_web": "no",
     "install_ohmyzsh": "no",
     "install_beanstalkd": "no",
@@ -92,6 +94,7 @@ Here is a list of options and their default values.
   ],
   "install_db": "yes",
   "install_ohmyzsh": "yes",
+  "php_version": "7.3",
   "install_web": "yes",
   "install_redis": "yes",
   "install_javascript_build_system": "yes",
@@ -105,11 +108,12 @@ Changelog
 
 **5.0**
 
+- Ubuntu 18.04 default (configurable)
 - Repository has been renamed from 'ansible' to 'virtual-machine'
 - Ansible now runs within the virtual machine making this setup compatible with Windows.
 - Removed a number of features including event store, java, scala, R, hhvm, and mailcatcher.
 - Provisioning instructions are handled in the Vagrantfile and options are now handled in the vm_options.json file.
-- Upgrade PHP to 7.3 (intend for this to be configurable)
+- Upgrade PHP to 7.3 (version is configurable)
 
 **4.0**
 

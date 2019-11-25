@@ -1,5 +1,5 @@
 {
-  "hostname": "myhostname",
+  "hostname": "dev-vm",
   "dbuser": "root",
   "dbpasswd": "password",
   "databases": [
@@ -22,11 +22,13 @@
       "value": "100M"
     }
   ],
-  "install_db": "yes",
-  "install_ohmyzsh": "yes",
-  "install_web": "yes",
+  "php_version": "7.3",
   "install_redis": "yes",
+  "install_db": "yes",
+  "install_web": "yes",
+  "php_version": "7.2",
   "install_javascript_build_system": "yes",
   "enable_swap": "yes",
-  "swap_size_in_mb": "1024"
+  "swap_size_in_mb": "1024",
+  "install_ohmyzsh": "yes"
 }

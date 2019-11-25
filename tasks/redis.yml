@@ -1,14 +1,20 @@
 ---
 # Redis
 
-- name: Redis | Install Redis PPA
-  apt_repository: repo='ppa:chris-lea/redis-server' update_cache=yes
+#- name: Redis | Install Redis PPA
+#  apt_repository: repo='ppa:chris-lea/redis-server' update_cache=yes
 
 - name: Redis | Install Redis
-  apt: pkg=redis-server state=latest force=yes
+  apt: pkg=redis state=latest force=yes
 
-- name: Redis | Enable with systemd
+- name: Redis | Enable with Systemd
   systemd:
-    name: redis-server
+    name: redis
     enabled: yes
     state: started
+
+#- name: Redis | Boot on Startup
+#  service:
+#    name: redis-server
+#    enabled: yes
+#    state: started

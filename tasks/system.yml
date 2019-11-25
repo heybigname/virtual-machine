@@ -1,10 +1,9 @@
 ---
 # Replace hosts
 - name: System | Configure /etc/hosts
-  template: src=../files/hosts dest=/etc/hosts mode=0600
+  template: src=../files/hosts dest=/etc/hosts mode=0644
 
 # Update Apt Repository
-
 - name: System | Update Repository
   apt: update_cache=yes
 
@@ -15,8 +14,8 @@
 
 # Python Requirements
 
-- name: System | Install python-software-properties
-  apt: pkg=python-software-properties state=present
+- name: System | Install Commmon Software Properties
+  apt: pkg=software-properties-common state=present
 
 - name: System | Install Build-Essentials
   apt: pkg=build-essential state=present
@@ -39,7 +38,7 @@
 # Ruby
 
 - name: System | Install Ruby Development Headers
-  apt: pkg=ruby2.3 state=present
+  apt: pkg=ruby-full state=present
 
 - name: System | Install Ruby Gems Package
   apt: pkg=rubygems-integration state=present

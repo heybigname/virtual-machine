@@ -1,14 +1,17 @@
-# vagrant init ubuntu/xenial64
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
 
 Vagrant.configure("2") do |config|
-    config.vm.box = "ubuntu/xenial64"
+    config.vm.box = "ubuntu/bionic64"
+    config.vm.network "private_network", ip: "10.10.10.10"
+    config.vm.box_check_update = false
+    config.vm.hostname = "vm"
 
-    config.vm.network :private_network, ip: "10.10.10.10"
-
-    config.vm.provider :virtualbox do |v|
-        v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
-        v.customize ["modifyvm", :id, "--memory", 1024]
-        v.customize ["modifyvm", :id, "--name", "CHANGE ME BEFORE USE"]
+    config.vm.provider "virtualbox" do |v|
+       v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
+       v.customize ["modifyvm", :id, "--natdnsproxy1", "on"]
+       v.customize ["modifyvm", :id, "--memory", "1024"]
+       v.customize ["modifyvm", :id, "--name", "CHANGE ME BEFORE USAGE"]
     end
 
     # set up ssh for inside-machine ansible. Change ~/.ssh to your host's ssh keys path.
@@ -26,6 +29,7 @@ Vagrant.configure("2") do |config|
         sudo apt-get install -y ansible
         cp /home/vagrant/ssh-host/* /home/vagrant/.ssh/
         ansible-playbook -i /vagrant/virtual-machine/hosts.ini /vagrant/virtual-machine/provision.yml --extra-vars="@/vagrant/vm_config.json"
+        exit 0
     SHELL
 
     # perform any additional provisioning here

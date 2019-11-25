@@ -4,8 +4,8 @@
 - name: PHP | Install Ondrej PHP PPA
   apt_repository: repo='ppa:ondrej/php' update_cache=yes
 
-- name: PHP | Install PHP 7.3
-  apt: pkg=php7.3 state=latest
+- name: PHP | Install PHP {{ php_version }}
+  apt: pkg=php{{ php_version }} state=latest
   tags: common
 
 - name: PHP | Install PHP Modules
@@ -18,7 +18,7 @@
 - stat: path=/usr/local/bin/composer
   register: composer_folder
 
-- name: PHP | Install Composer
+- name: PHP | Download Composer
   get_url:
     url: https://getcomposer.org/installer
     dest: /tmp
@@ -31,7 +31,7 @@
 # Update PHP.ini
 
 - name: PHP | Install Custom PHP.ini Configurations for CLI PHP
-  ini_file: dest=/etc/php/7.3/cli/php.ini
+  ini_file: dest=/etc/php/{{ php_version }}/cli/php.ini
             section=PHP
             option="{{ item.option }}"
             value="{{ item.value }}"

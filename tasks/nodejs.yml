@@ -9,7 +9,7 @@
 
 - name: Node.js | Install Repository
   apt_repository:
-    repo: "deb https://deb.nodesource.com/node_7.x xenial main"
+    repo: "deb https://deb.nodesource.com/node_7.x bionic main"
     state: present
     update_cache: yes
 

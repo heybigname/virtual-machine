@@ -7,7 +7,8 @@
     dbpasswd: "password"
     databases: []
     sites: []
-    php_modules: ['php7.3-mysql', 'php7.3-gd', 'php-apcu', 'php7.3-curl', 'php7.3-intl', 'php-memcached', 'php7.3-mbstring', 'php7.3-xml', 'php7.3-pgsql', 'php7.3-dev']
+    php_version: "7.3"
+    php_modules: ['php{{ php_version }}-mysql', 'php{{ php_version }}-gd', 'php-apcu', 'php{{ php_version }}-curl', 'php{{ php_version }}-intl', 'php-memcached', 'php{{ php_version }}-mbstring', 'php{{ php_version }}-xml', 'php{{ php_version }}-pgsql', 'php{{ php_version }}-dev']
     install_db: "no"
     install_web: "no"
     install_ohmyzsh: "no"
@@ -28,6 +29,8 @@
     - include: tasks/system.yml
     - include: tasks/ohmyzsh.yml
       when: install_ohmyzsh == "yes"
+    - include: tasks/redis.yml
+      when: install_redis == "yes"
     - include: tasks/mysql.yml
       when: install_db == "yes"
     - include: tasks/php.yml
@@ -40,8 +43,6 @@
       when: install_beanstalkd == "yes"
     - include: tasks/nodejs.yml
       when: install_javascript_build_system == "yes"
-    - include: tasks/redis.yml
-      when: install_redis == "yes"
     - include: tasks/ruby.yml
     - include: tasks/swap.yml
       when: enable_swap == "yes"
@@ -50,9 +51,11 @@
     - include: tasks/rabbitmq.yml
       when: install_rabbit_mq == "yes"
   handlers:
+    - name: restart php-fpm
+      service: name=php{{ php_version }}-fpm state=restarted
     - name: restart nginx
       service: name=nginx state=restarted
-    - name: restart php7.3-fpm
-      service: name=php7.3-fpm state=restarted
+    - name: restart redis
+      service: name=redis state=restarted
     - name: restart mysql
       service: name=mysql state=restarted
