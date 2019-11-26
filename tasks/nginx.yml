@@ -25,5 +25,5 @@
 
 - name: NGINX | Activate Hosts
   file: src=/etc/nginx/sites-available/{{ item.hostname }}.conf dest=/etc/nginx/sites-enabled/{{ item.hostname }}.conf state=link
-  with_items: "{{sites}}"
+  with_items: "{{ sites }}"
   notify: restart nginx
