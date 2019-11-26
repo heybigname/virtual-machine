@@ -27,6 +27,8 @@
     install_rabbit_mq: "no"
   tasks:
     - include: tasks/system.yml
+    - include: tasks/swap.yml
+      when: enable_swap == "yes"
     - include: tasks/ohmyzsh.yml
       when: install_ohmyzsh == "yes"
     - include: tasks/redis.yml
@@ -44,8 +46,6 @@
     - include: tasks/nodejs.yml
       when: install_javascript_build_system == "yes"
     - include: tasks/ruby.yml
-    - include: tasks/swap.yml
-      when: enable_swap == "yes"
     - include: tasks/postgresql.yml
       when: install_postgresql == "yes"
     - include: tasks/rabbitmq.yml
