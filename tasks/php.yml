@@ -32,8 +32,8 @@
 
 - name: PHP | Install Custom PHP.ini Configurations for CLI PHP
   ini_file: dest=/etc/php/{{ php_version }}/cli/php.ini
-            section=PHP
-            option="{{ item.option }}"
-            value="{{ item.value }}"
-            backup=yes
+    section=PHP
+    option="{{ item.option }}"
+    value="{{ item.value }}"
+    backup=yes
   with_items: "{{php_configs}}"

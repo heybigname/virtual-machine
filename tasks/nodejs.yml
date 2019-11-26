@@ -18,5 +18,5 @@
     state: present
     update_cache: yes
 
-- name: Node.js | INstall Yarn
+- name: Node.js | Install Yarn
   apt: pkg=yarn state=latest

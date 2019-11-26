@@ -35,11 +35,11 @@
       when: install_redis == "yes"
     - include: tasks/mysql.yml
       when: install_db == "yes"
+    - include: tasks/nginx.yml
+      when: install_web == "yes"
     - include: tasks/php.yml
       when: install_web == "yes"
     - include: tasks/php-fpm.yml
-      when: install_web == "yes"
-    - include: tasks/nginx.yml
       when: install_web == "yes"
     - include: tasks/beanstalkd.yml
       when: install_beanstalkd == "yes"
