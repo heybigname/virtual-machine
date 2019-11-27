@@ -47,3 +47,6 @@
 
 - name: System | Set hostname
   hostname: name={{ hostname }}
+
+- name: System | Deploy new .vimrc
+  template: src=files/vimrc.in dest=/home/vagrant/.vimrc owner=vagrant
