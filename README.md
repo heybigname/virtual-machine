@@ -98,6 +98,7 @@ Here is a list of options and their default values.
   "install_web": "yes",
   "install_redis": "yes",
   "install_javascript_build_system": "yes",
+  "node_major_version": "10",
   "enable_swap": "yes",
   "swap_size_in_mb": "1024"
 }

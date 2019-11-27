@@ -2,7 +2,7 @@
 # Node.js
 
 - name: Node.js | Install Node.js Repository
-  shell: curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
+  shell: curl -sL https://deb.nodesource.com/setup_{{ node_major_version }}.x | sudo -E bash -
 
 - name: Node.js | Install Node.js
   apt: pkg=nodejs state=latest

@@ -26,8 +26,8 @@
   "install_redis": "yes",
   "install_db": "yes",
   "install_web": "yes",
-  "php_version": "7.2",
   "install_javascript_build_system": "yes",
+  "node_major_version": "10",
   "enable_swap": "yes",
   "swap_size_in_mb": "1024",
   "install_ohmyzsh": "yes"
