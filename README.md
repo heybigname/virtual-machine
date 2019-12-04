@@ -5,7 +5,7 @@ This virtual machine configuration is designed to have ONE application per machi
 
 Ansible does not run on Windows but this configuration installs and runs it within the client machine instead of the Windows host so it is now Windows compatible.
 
-- [Ubuntu](http://www.ubuntu.com/) _(18.04 default, configurable)_ 
+- [Ubuntu](http://www.ubuntu.com/) _(tested 16.04 and 18.04, configurable)_ 
 - [NGINX](http://nginx.org/) + [PHP7-FPM](http://php-fpm.org/) _(optional)_
 - [PHP](http://php.net/) _(optional)_
 - [NodeJS](http://nodejs.org/) _(optional)_
