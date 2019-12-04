@@ -28,8 +28,7 @@ Vagrant.configure("2") do |config|
         sudo apt-get update -y
         sudo apt-get install -y ansible
         cp /home/vagrant/ssh-host/* /home/vagrant/.ssh/ && chown -R vagrant /home/vagrant/.ssh
-        ansible-playbook -i /vagrant/virtual-machine/hosts.ini /vagrant/virtual-machine/provision.yml --extra-vars="@/vagrant/vm_config.json"
-        exit 0
+        ansible-playbook -i /vagrant/virtual-machine/hosts.ini /vagrant/virtual-machine/provision.yml --extra-vars="@/vagrant/vm_config.json" && exit 0
     SHELL
 
     # perform any additional provisioning here
