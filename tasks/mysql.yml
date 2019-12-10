@@ -7,6 +7,10 @@
 - name: MySQL | Install python-mysqldb
   apt: pkg=python-mysqldb state=present
 
+- name: MySQL | Install mysqld.conf
+  template: src=files/mysqld.cnf dest=/etc/mysql/mysql.conf.d/mysqld.cnf owner=root
+  notify: restart mysql
+
 - name: MySQL | Create User
   mysql_user: name={{ dbuser }} host="%" password={{ dbpasswd }} priv="*.*:ALL"
 

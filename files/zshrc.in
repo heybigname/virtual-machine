@@ -53,3 +53,4 @@ setopt interactivecomments
 # set up locale
 export LC_ALL="en_US.UTF-8"
 
+alias gs="git status -s"

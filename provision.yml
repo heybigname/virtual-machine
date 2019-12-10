@@ -15,6 +15,7 @@
     install_beanstalkd: "no"
     install_redis: "no"
     install_javascript_build_system: "no"
+    node_major_version: "13"
     install_gems: []
     php_configs: []
     install_postgresql: "no"
