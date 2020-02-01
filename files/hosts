@@ -11,4 +11,4 @@ ff00::0	ip6-mcastprefix
 ff02::1	ip6-allnodes
 ff02::2	ip6-allrouters
 ff02::3	ip6-allhosts
-127.0.1.1	ubuntu-bionic	ubuntu-bionic
+127.0.1.1	ubuntu-xenial	ubuntu-xenial

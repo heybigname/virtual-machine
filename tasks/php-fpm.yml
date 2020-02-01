@@ -1,17 +1,24 @@
 ---
-# PHP7-FPM
-
+# install fpm
 - name: PHP-FPM | Install PHP{{ php_version }}-FPM
   apt: pkg=php{{ php_version }}-fpm state=present
 
-# Update PHP.ini
+- name: PHP-FPM | Chown /run/php
+  file:
+    path: /run/php
+    owner: vagrant
+    group: vagrant
+    mode: '0755'
+    state: directory
+  notify: restart php-fpm
 
+# Update FPM PHP.ini
 - name: PHP-FPM | Install Custom PHP.ini Configurations for FPM PHP
   ini_file: dest=/etc/php/{{ php_version }}/fpm/php.ini
-            section=PHP
-            option={{ item.option }}
-            value={{ item.value }}
-            backup=yes
+    section=PHP
+    option={{ item.option }}
+    value={{ item.value }}
+    backup=yes
   with_items: "{{php_configs}}"
 
 - name: PHP-FPM | Install Primary Configuration File
