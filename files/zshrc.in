@@ -54,3 +54,4 @@ setopt interactivecomments
 export LC_ALL="en_US.UTF-8"
 
 alias gs="git status -s"
+export PROMPT_EOL_MARK=''

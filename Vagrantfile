@@ -17,6 +17,8 @@ Vagrant.configure("2") do |config|
     # set up ssh for inside-machine ansible. Change ~/.ssh to your host's ssh keys path.
     config.vm.synced_folder ".", "/vagrant"
     config.vm.synced_folder "~/.ssh", "/home/vagrant/ssh-host"
+    
+    config.vm.provision "file", source: "~/.gitconfig", destination: ".gitconfig"
 
     # install ansible inside the machine then provision with it
     # provisioning configuration is vm_config.json
