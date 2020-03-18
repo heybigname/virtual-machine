@@ -48,8 +48,7 @@ Here is a list of options and their default values.
     "php_modules": ["php{{ php_version }}-mysql", "php{{ php_version }}-gd", "php-apcu", "php{{ php_version }}-curl", "php{{ php_version }}-intl", "php-memcached"],
     "install_db": "no",
     "php_version": "7.3",
-    "install_web": "no",
-    "install_ohmyzsh": "no",
+    "install_web": "no"
     "install_beanstalkd": "no",
     "install_redis": "no",
     "install_javascript_build_system": "no",
@@ -93,7 +92,6 @@ Here is a list of options and their default values.
     }
   ],
   "install_db": "yes",
-  "install_ohmyzsh": "yes",
   "php_version": "7.3",
   "install_web": "yes",
   "install_redis": "yes",

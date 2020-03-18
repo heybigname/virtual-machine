@@ -11,7 +11,6 @@
     php_modules: ['php{{ php_version }}-mysql', 'php{{ php_version }}-gd', 'php-apcu', 'php{{ php_version }}-curl', 'php{{ php_version }}-intl', 'php-memcached', 'php{{ php_version }}-mbstring', 'php{{ php_version }}-xml', 'php{{ php_version }}-pgsql', 'php{{ php_version }}-dev']
     install_db: "no"
     install_web: "no"
-    install_ohmyzsh: "no"
     install_beanstalkd: "no"
     install_redis: "no"
     install_javascript_build_system: "no"
@@ -30,8 +29,7 @@
     - include: tasks/system.yml
     - include: tasks/swap.yml
       when: enable_swap == "yes"
-    - include: tasks/ohmyzsh.yml
-      when: install_ohmyzsh == "yes"
+    - include: tasks/terminal.yml
     - include: tasks/redis.yml
       when: install_redis == "yes"
     - include: tasks/mysql.yml

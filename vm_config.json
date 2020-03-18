@@ -29,6 +29,5 @@
   "install_javascript_build_system": "yes",
   "node_major_version": "10",
   "enable_swap": "yes",
-  "swap_size_in_mb": "1024",
-  "install_ohmyzsh": "yes"
+  "swap_size_in_mb": "1024"
 }

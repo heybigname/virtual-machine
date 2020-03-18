@@ -1,20 +1,24 @@
 ---
 # oh-my-zsh
 
-- name: oh-my-zsh | Install oh-my-zsh
+- name: Terminal | Install oh-my-zsh
   apt:
     name: ['git', 'zsh', 'git-core']
     state: latest
     update_cache: yes
 
-- name: oh-my-zsh | Clone down repository
+- name: Terminal | Clone down repository
   git: repo=https://github.com/robbyrussell/oh-my-zsh.git dest=/home/vagrant/.oh-my-zsh
 
-- name: oh-my-zsh | Remove standard .zshrc
+- name: Terminal | Remove standard .zshrc
   file: path=/home/vagrant/.zshrc state=absent
 
-- name: oh-my-zsh | Deploy new .zshrc
+- name: Terminal | Deploy new .zshrc
   template: src=files/zshrc.in dest=/home/vagrant/.zshrc owner=vagrant
 
-- name: oh-my-zsh | Set zsh as default shell
+- name: Terminal | Set zsh as default shell
   user: name=vagrant shell=/bin/zsh
+  
+- name: Terminal | Download and install LSD
+  apt:
+    deb: https://github.com/Peltoche/lsd/releases/download/0.16.0/lsd-musl_0.16.0_amd64.deb

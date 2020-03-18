@@ -46,6 +46,10 @@ export PATH=/usr/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bi
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
 # Change to the vagrant folder on connect
+#
+export EDITOR='/usr/bin/vim'
+export VISUAL='/usr/bin/vim'
+
 cd /vagrant
 
 setopt interactivecomments
@@ -55,3 +59,9 @@ export LC_ALL="en_US.UTF-8"
 
 alias gs="git status -s"
 export PROMPT_EOL_MARK=''
+
+alias ls='lsd'
+alias l='ls -l'
+alias la='ls -a'
+alias lla='ls -la'
+alias lt='ls --tree'
