@@ -22,10 +22,11 @@
       "value": "100M"
     }
   ],
-  "php_version": "7.3",
   "install_redis": "yes",
   "install_db": "yes",
-  "install_web": "yes",
+  "install_nginx": "yes",
+  "install_php": "yes",
+  "php_version": "7.4",
   "install_javascript_build_system": "yes",
   "node_major_version": "10",
   "enable_swap": "yes",
