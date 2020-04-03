@@ -25,6 +25,7 @@
     enable_swap: "yes"
     swap_size_in_mb: 1024
     install_rabbit_mq: "no"
+    install_smenu: "no"
   tasks:
     - include: tasks/system.yml
     - include: tasks/swap.yml
@@ -49,6 +50,8 @@
       when: install_postgresql == "yes"
     - include: tasks/rabbitmq.yml
       when: install_rabbit_mq == "yes"
+    - include: tasks/smenu.yml
+      when: install_smenu == "yes"
   handlers:
     - name: restart php-fpm
       service: name=php{{ php_version }}-fpm state=restarted

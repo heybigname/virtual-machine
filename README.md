@@ -105,6 +105,10 @@ Here is a list of options and their default values.
 Changelog
 =========
 
+**5.3**
+
+- Add ['smenu'](https://github.com/p-gen/smenu)
+
 **5.0**
 
 - Ubuntu 18.04 default (configurable)

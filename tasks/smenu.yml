@@ -1,0 +1,32 @@
+---
+# smenu
+- name: smenu | Install ncurses-dev
+  apt:
+    name: ncurses-dev
+    state: latest
+    update_cache: yes
+  
+- name: smenu | Download smenu source
+  get_url:
+    url: https://github.com/p-gen/smenu/archive/master.zip
+    dest: /tmp
+    mode: '0440'
+
+- name: smenu | Extract smenu source
+  unarchive:
+    src: /tmp/smenu-master.zip
+    dest: /tmp
+    remote_src: yes
+    owner: vagrant
+
+- name: smenu | Build smenu
+  shell: /bin/sh build.sh
+  args:
+    chdir: /tmp/smenu-master
+    
+- name: smenu | Move smenu to /usr/local/bin
+  copy:
+    src: /tmp/smenu-master/smenu
+    dest: /usr/local/bin/smenu
+    remote_src: yes
+    mode: a+x
