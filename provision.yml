@@ -7,10 +7,11 @@
     dbpasswd: "password"
     databases: []
     sites: []
-    php_version: "7.3"
+    php_version: "7.4"
     php_modules: ['php{{ php_version }}-mysql', 'php{{ php_version }}-gd', 'php-apcu', 'php{{ php_version }}-curl', 'php{{ php_version }}-intl', 'php-memcached', 'php{{ php_version }}-mbstring', 'php{{ php_version }}-xml', 'php{{ php_version }}-pgsql', 'php{{ php_version }}-dev']
     install_db: "no"
-    install_web: "no"
+    install_nginx: "no"
+    install_php: "no"
     install_beanstalkd: "no"
     install_redis: "no"
     install_javascript_build_system: "no"

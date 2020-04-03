@@ -14,7 +14,8 @@ Ansible does not run on Windows but this configuration installs and runs it with
 - [MySQL](https://mysql.com) _(optional)_
 - [Postgresql](https://www.postgresql.org/) _(optional)_
 - [RabbitMQ](https://www.rabbitmq.com/) _(optional)_
-- [Supervisord](http://supervisord.org/) 
+- [Supervisord](http://supervisord.org/)
+- [Smenu](https://github.com/p-gen/smenu)
 
 - site configuration defined in [vm_config.json](https://github.com/heybigname/virtual-machine/blob/master/vm_config.json)
 - custom NGINX site configuration is optional
@@ -37,38 +38,38 @@ Ansible does not run on Windows but this configuration installs and runs it with
 
 Here is a list of options and their default values.
 
-```json
-{
-    "hostname": "dev",
-    "dbuser": "root",
-    "dbpasswd": "password",
-    "databases": [],
-    "sites": [],
-    "php_configs": [],
-    "php_modules": ["php{{ php_version }}-mysql", "php{{ php_version }}-gd", "php-apcu", "php{{ php_version }}-curl", "php{{ php_version }}-intl", "php-memcached"],
-    "install_db": "no",
-    "php_version": "7.3",
-    "install_web": "no"
-    "install_beanstalkd": "no",
-    "install_redis": "no",
-    "install_javascript_build_system": "no",
-    "install_gems": [],
-    "enable_swap": "yes",
-    "swap_size_in_mb": "1024",
-    "install_postgresql": "no",
-    "postgresql_version": "9.5",
-    "postgresql_user": "root",
-    "postgresql_passwd": "password",
-    "postgresql_databases": ["development"],
-    "install_rabbit_mq": "no"
-}
+```yaml
+hostname: "dev"
+dbuser: "root"
+dbpasswd: "password"
+databases: []
+sites: []
+php_version: "7.4"
+php_modules: ['php{{ php_version }}-mysql', 'php{{ php_version }}-gd', 'php-apcu', 'php{{ php_version }}-curl', 'php{{ php_version }}-intl', 'php-memcached', 'php{{ php_version }}-mbstring', 'php{{ php_version }}-xml', 'php{{ php_version }}-pgsql', 'php{{ php_version }}-dev']
+install_db: "no"
+install_nginx: "no"
+install_php: "no"
+install_beanstalkd: "no"
+install_redis: "no"
+install_javascript_build_system: "no"
+node_major_version: "13"
+install_gems: []
+php_configs: []
+install_postgresql: "no"
+postgresql_version: "9.5"
+postgresql_user: "root"
+postgresql_passwd: "password"
+postgresql_databases: []
+enable_swap: "yes"
+swap_size_in_mb: 1024
+install_rabbit_mq: "no"
+install_smenu: "no"
 ```
 
 # Example vm_config.json
 
 ```ruby
-{
-  "hostname": "myhostname",
+  "hostname": "dev-vm",
   "dbuser": "root",
   "dbpasswd": "password",
   "databases": [
@@ -91,19 +92,24 @@ Here is a list of options and their default values.
       "value": "100M"
     }
   ],
-  "install_db": "yes",
-  "php_version": "7.3",
-  "install_web": "yes",
   "install_redis": "yes",
+  "install_db": "yes",
+  "install_nginx": "yes",
+  "install_php": "yes",
+  "php_version": "7.4",
   "install_javascript_build_system": "yes",
   "node_major_version": "10",
   "enable_swap": "yes",
-  "swap_size_in_mb": "1024"
-}
+  "swap_size_in_mb": "1024",
+  "install_smenu": "yes"
 ```
 
 Changelog
 =========
+
+**6.0**
+
+- Update names (breaking backward compatibility) so nginx / php are now separated. "install_php" "install_nginx". The goal is to reduce provisioning time for command line systems.
 
 **5.3**
 
