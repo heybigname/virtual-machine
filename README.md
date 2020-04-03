@@ -1,4 +1,4 @@
-PHP Development Virtual Machine 5.0
+PHP Development Virtual Machine
 ===============
 
 This virtual machine configuration is designed to have ONE application per machine. However, it does support multiple domains / sites per configuration. This virtual machine is a particularly good fit if you run Ubuntu on your servers.
