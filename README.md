@@ -35,6 +35,12 @@ Ansible does not run on Windows but this configuration installs and runs it with
 4. Install [Vagrant](http://vagrantup.com) and [VirtualBox](https://www.virtualbox.org/).
 5. Just run `vagrant up`
 
+## Updating
+
+If you installed the virtual machine as a submodule then you can update it to its newest version from your git repository root with `git submodule update --remote`. 
+
+> **Note:** You may need to copy `vm_config.json` changes or rarely `Vagrantfile` changes.
+
 # List of Options
 
 Here is a list of options and their default values.
