@@ -16,6 +16,7 @@ Ansible does not run on Windows but this configuration installs and runs it with
 - [RabbitMQ](https://www.rabbitmq.com/) _(optional)_
 - [Supervisord](http://supervisord.org/)
 - [Smenu](https://github.com/p-gen/smenu)
+- [Lazygit](https://github.com/p-gen/smenu)
 
 - site configuration defined in [vm_config.json](https://github.com/heybigname/virtual-machine/blob/master/vm_config.json)
 - custom NGINX site configuration is optional
@@ -64,6 +65,7 @@ enable_swap: "yes"
 swap_size_in_mb: 1024
 install_rabbit_mq: "no"
 install_smenu: "no"
+install_lazygit: "no"
 ```
 
 # Example vm_config.json
@@ -101,11 +103,16 @@ install_smenu: "no"
   "node_major_version": "10",
   "enable_swap": "yes",
   "swap_size_in_mb": "1024",
-  "install_smenu": "yes"
+  "install_smenu": "yes",
+  "install_lazygit": "yes"
 ```
 
 Changelog
 =========
+
+**6.1**
+
+- Add convenient textual git interface "lazygit" to simplify more complex tasks like rebase.
 
 **6.0**
 

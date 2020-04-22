@@ -60,6 +60,9 @@ export LC_ALL="en_US.UTF-8"
 alias gs="git status -s"
 export PROMPT_EOL_MARK=''
 
+# small git tweak for lazygit
+export GIT_DISCOVERY_ACROSS_FILESYSTEM=1
+
 alias ls='lsd'
 alias l='ls -l'
 alias la='ls -a'
