@@ -23,7 +23,7 @@
     }
   ],
   "boost_pam_limits": "yes",
-  "boosted_pam_limit": "40000",
+  "boosted_pam_limit": 40000,
   "install_redis": "yes",
   "install_db": "yes",
   "install_nginx": "yes",
