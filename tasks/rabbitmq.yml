@@ -1,17 +1,6 @@
 ---
 # Rabbit MQ
 
-- name: Rabbit MQ | Install Rabbit APT Repository
-  apt_repository: repo='deb https://dl.bintray.com/rabbitmq/debian bionic main' state=present
-
-- name: Rabbit MQ | Install Erlang APT Repository
-  apt: deb='https://packages.erlang-solutions.com/erlang-solutions_1.0_all.deb'
-
-- name: Rabbit MQ | Add APT Key
-  apt_key:
-    url: https://www.rabbitmq.com/rabbitmq-release-signing-key.asc
-    state: present
-
 - name: Rabbit MQ | Install Rabbit MQ
   apt:
     name: rabbitmq-server
