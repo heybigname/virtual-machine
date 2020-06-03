@@ -72,6 +72,7 @@ swap_size_in_mb: 1024
 install_rabbit_mq: "no"
 install_smenu: "no"
 install_lazygit: "no"
+boost_pam_limits: "no"
 ```
 
 # Example vm_config.json
@@ -110,11 +111,16 @@ install_lazygit: "no"
   "enable_swap": "yes",
   "swap_size_in_mb": "1024",
   "install_smenu": "yes",
-  "install_lazygit": "yes"
+  "install_lazygit": "yes",
+  "boost_pam_limits": "no"
 ```
 
 Changelog
 =========
+
+**6.2**
+
+- Add ability to boost pam limits
 
 **6.1**
 

@@ -1,5 +1,5 @@
 ---
-# oh-my-zsh
+# terminal improvements
 
 - name: Terminal | Install oh-my-zsh
   apt:

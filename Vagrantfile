@@ -12,7 +12,8 @@ Vagrant.configure("2") do |config|
        v.customize ["modifyvm", :id, "--natdnsproxy1", "on"]
        v.customize ["modifyvm", :id, "--memory", "1024"]
        v.customize ["modifyvm", :id, "--name", "CHANGE ME BEFORE USAGE"]
-       v.customize ["storagectl", :id, "--name", "SCSI", "--hostiocache", "on"]
+       # optional, suggested default is off
+       # v.customize ["storagectl", :id, "--name", "SCSI", "--hostiocache", "on"]
     end
 
     # set up ssh for inside-machine ansible. Change ~/.ssh to your host's ssh keys path.

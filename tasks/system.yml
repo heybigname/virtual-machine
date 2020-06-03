@@ -50,3 +50,21 @@
 
 - name: System | Deploy new .vimrc
   template: src=files/vimrc.in dest=/home/vagrant/.vimrc owner=vagrant
+  
+# PAM limits
+
+- name: "System | Updating PAM Limits"
+  when: boost_pam_limits == "yes"
+  pam_limits:
+    domain: '*'
+    limit_type: hard
+    limit_item: nofile
+    value: 39693561
+
+- name: "System | Updating PAM Limits"
+  when: boost_pam_limits == "yes"
+  pam_limits:
+    domain: '*'
+    limit_type: soft
+    limit_item: nofile
+    value: 39693561

@@ -28,6 +28,7 @@
     install_rabbit_mq: "no"
     install_smenu: "no"
     install_lazygit: "no"
+    boost_pam_limits: "no"
   tasks:
     - include: tasks/system.yml
     - include: tasks/swap.yml
