@@ -113,6 +113,7 @@ boost_pam_limits: "no"
   "install_smenu": "yes",
   "install_lazygit": "yes",
   "boost_pam_limits": "no"
+  "boosted_pam_limit": "40000"
 ```
 
 Changelog
