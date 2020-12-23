@@ -5,7 +5,9 @@
 
 # Update Apt Repository
 - name: System | Update Repository
-  apt: update_cache=yes
+  apt:
+    update_cache: yes
+    force_apt_get: yes
 
 - name: System | Install Various Packages
   apt:

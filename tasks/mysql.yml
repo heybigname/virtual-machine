@@ -9,7 +9,7 @@
   when: ansible_distribution == 'Ubuntu' and ansible_distribution_release == 'xenial' or ansible_distribution_release == 'bionic'
 
 - name: MySQL | Install python-mysqldb
-  apt: pkg=python-mysqldb state=present
+  apt: pkg=python3-mysqldb state=present
   when: ansible_distribution == 'Ubuntu' and ansible_distribution_release == 'focal'
 
 - name: MySQL | Install mysqld.conf
