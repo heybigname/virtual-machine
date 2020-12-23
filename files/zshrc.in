@@ -64,9 +64,31 @@ export PROMPT_EOL_MARK=''
 export GIT_DISCOVERY_ACROSS_FILESYSTEM=1
 
 alias ls='lsd'
-alias l='ls -l'
+alias l='ls --group-dirs first'
+alias ll='ls --group-dirs first --blocks permission,user,group,size,name -l --no-symlink'
 alias la='ls -a'
 alias lla='ls -la'
 alias lt='ls --tree'
 
 alias az="lazygit"
+alias -s php="php"
+
+test() {
+    if [[ -z "$1" ]]; then
+        bin/phpunit
+    else
+        bin/phpunit --filter $1
+    fi
+}
+
+command_not_found_handler() {
+    if [[ $0 == *"Test" ]]; then
+        test $0
+        return 0
+    fi
+    return 127
+}
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

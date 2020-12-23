@@ -1,0 +1,8 @@
+---
+# Chromium
+
+- name: Chromium | Install Canonical Chromium Builds / Stage
+  apt_repository: repo='ppa:canonical-chromium-builds/stage' update_cache=yes
+
+- name: Chromium | Install Chromium
+  apt: pkg=chromium-browser state=latest
