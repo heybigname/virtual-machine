@@ -62,7 +62,9 @@
     limit_type: hard
     limit_item: nofile
     value: "{{ boosted_pam_limit }}"
-
+  args:
+    warn: false
+    
 - name: "System | Updating PAM Limits"
   when: boost_pam_limits == "yes"
   pam_limits:
@@ -70,3 +72,6 @@
     limit_type: soft
     limit_item: nofile
     value: "{{ boosted_pam_limit }}"
+  args:
+    warn: false
+  

@@ -18,6 +18,7 @@
 
 - name: MySQL | Create User
   mysql_user: name={{ dbuser }} host="%" password={{ dbpasswd }} priv="*.*:ALL"
+  no_log: true
 
 - name: MySQL | Create User
   mysql_user: name={{ dbuser }} host="127.0.0.1" password={{ dbpasswd }} priv="*.*:ALL"
