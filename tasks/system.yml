@@ -8,6 +8,8 @@
   apt:
     update_cache: yes
     force_apt_get: yes
+  args:
+    warn: false
 
 - name: System | Install Various Packages
   apt:
@@ -62,8 +64,6 @@
     limit_type: hard
     limit_item: nofile
     value: "{{ boosted_pam_limit }}"
-  args:
-    warn: false
     
 - name: "System | Updating PAM Limits"
   when: boost_pam_limits == "yes"
@@ -72,6 +72,4 @@
     limit_type: soft
     limit_item: nofile
     value: "{{ boosted_pam_limit }}"
-  args:
-    warn: false
   
