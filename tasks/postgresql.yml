@@ -1,6 +1,11 @@
 ---
 # Postgresql
 
+- name: Postgresql | Add APT Key
+  ansible.builtin.apt_key:
+    url: https://www.postgresql.org/media/keys/ACCC4CF8.asc
+    state: present
+
 - name: Postgresql | Install Apt Repository
   apt_repository:
     repo: "deb http://apt.postgresql.org/pub/repos/apt/ bionic-pgdg main"
@@ -9,7 +14,7 @@
 
 - name: Postgresql | Install Postgresql
   apt:
-    name: ["postgresql-{{ postgresql_version }}", 'postgresql-contrib', 'python-psycopg2']
+    name: [ "postgresql-{{ postgresql_version }}", 'postgresql-contrib', 'python-psycopg2' ]
     state: present
 
 - name: Postgresql | Create database
@@ -32,14 +37,14 @@
 
 - name: Postgresql | Listen to all requests
   lineinfile: dest=/etc/postgresql/{{ postgresql_version }}/main/postgresql.conf
-              regexp="^listen_addresses"
-              line="listen_addresses = '*'" state=present
+    regexp="^listen_addresses"
+    line="listen_addresses = '*'" state=present
 
 - name: Postgresql | Give vagrant access to the database instance
   lineinfile: dest=/etc/postgresql/{{ postgresql_version }}/main/pg_hba.conf
-                 regexp='host\s+all\s+all\s+127.0.0.1/32\s+md5'
-                 line='host all all 0.0.0.0/0 md5'
-                 insertbefore=BOF
+    regexp='host\s+all\s+all\s+127.0.0.1/32\s+md5'
+    line='host all all 0.0.0.0/0 md5'
+    insertbefore=BOF
 
 - name: restart postgresql
   service: name=postgresql state=restarted
