@@ -19,7 +19,7 @@
     install_gems: []
     php_configs: []
     install_postgresql: "no"
-    postgresql_version: "9.5"
+    postgresql_version: "11"
     postgresql_user: "root"
     postgresql_passwd: "password"
     postgresql_databases: []

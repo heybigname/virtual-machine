@@ -1,6 +1,12 @@
 ---
 # Postgresql
 
+- name: Postgresql | Install Apt Repository
+  apt_repository:
+    repo: "deb http://apt.postgresql.org/pub/repos/apt/ bionic-pgdg main"
+    state: present
+    update_cache: yes
+
 - name: Postgresql | Install Postgresql
   apt:
     name: ["postgresql-{{ postgresql_version }}", 'postgresql-contrib', 'python-psycopg2']

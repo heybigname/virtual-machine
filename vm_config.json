@@ -26,6 +26,8 @@
   "boosted_pam_limit": 40000,
   "install_redis": "yes",
   "install_db": "yes",
+  "install_postgresql": "no",
+  "postgresql_version": "11",
   "install_nginx": "yes",
   "install_php": "yes",
   "php_version": "7.4",
