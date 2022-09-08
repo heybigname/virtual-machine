@@ -8,7 +8,7 @@
 
 - name: Postgresql | Install Apt Repository
   apt_repository:
-    repo: "deb http://apt.postgresql.org/pub/repos/apt/ bionic-pgdg main"
+    repo: "deb http://apt.postgresql.org/pub/repos/apt/ jammy-pgdg main"
     state: present
     update_cache: yes
 
