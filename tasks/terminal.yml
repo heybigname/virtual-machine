@@ -21,4 +21,4 @@
   
 - name: Terminal | Download and install LSD
   apt:
-    deb: https://github.com/Peltoche/lsd/releases/download/0.16.0/lsd-musl_0.16.0_amd64.deb
+    deb: https://github.com/Peltoche/lsd/releases/download/0.23.0/lsd-musl_0.23.0_amd64.deb

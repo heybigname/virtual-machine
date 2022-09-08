@@ -1,104 +1,211 @@
+# === Optimized my.cnf configuration for MySQL/MariaDB (on Ubuntu, CentOS, Almalinux etc. servers) ===
 #
-# The MySQL database server configuration file.
+# by Fotis Evangelou, developer of Engintron (engintron.com)
 #
-# You can copy this to one of:
-# - "/etc/mysql/my.cnf" to set global options,
-# - "~/.my.cnf" to set user-specific options.
+# ~ Updated December 2021 ~
 #
-# One can use all long options that the program supports.
-# Run program with --help to get a list of available options and with
-# --print-defaults to see which it would actually understand and use.
 #
-# For explanations see
-# http://dev.mysql.com/doc/mysql/en/server-system-variables.html
+# The settings provided below are a starting point for a 8-16 GB RAM server with 4-8 CPU cores.
+# If you have different resources available you should adjust accordingly to save CPU, RAM & disk I/O usage.
+#
+# The settings marked with a specific comment or the word "UPD" (after the value)
+# should be adjusted for your system by using database diagnostics tools like:
+#
+# https://github.com/major/MySQLTuner-perl
+# or
+# https://github.com/BMDan/tuning-primer.sh
+#
+# Run either of these scripts before optimizing your database, at least 1 hr after the optimization & finally
+# at least once a day for 3 days (without restarting the database) to see how your server performs and if you need
+# to re-adjust anything. The more MySQL/MariaDB runs without restarting, the more usage data it gathers, so these
+# diagnostics scripts will report in mode detail how MySQL/MariaDB performs.
+#
+#
+# IMPORTANT NOTE: If there is NO comment after a setting value, then 99,9% of the times you won't need to adjust it.
+#
+#
+# --- THINGS TO DO AFTER YOU UPDATE MY.CNF - TROUBLESHOOTING ---
+#
+# If any terminal commands are mentioned, make sure you execute them as "root" user.
+#
+# If MySQL or MariaDB cannot start (or restart), then perform the following actions.
+#
+# 1. If the server had the stock database configuration and you added or updated any
+#    "innodb_log_*" settings (as suggested below), then execute these commands ONLY
+#    the first time you apply this configuration:
+#
+#    $ rm -rvf /var/lib/mysql/ib_logfile*
+#    $ chown -R mysql:mysql /var/lib/mysql
+#    $ service mysql restart
+#
+#    or use the shorthand command:
+#    $ rm -rvf /var/lib/mysql/ib_logfile*; chown -R mysql:mysql /var/lib/mysql; service mysql restart
+#
+# 2. If the setting "bind-address" is not commented out, then make sure the file /etc/hosts is
+#    properly configured. A good example of a "clean" /etc/hosts file is something like this:
+#
+#    127.0.0.1 localhost localhost.localdomain localhost4 localhost4.localdomain4
+#    ::1       localhost localhost.localdomain localhost6 localhost6.localdomain6
+#    1.2.3.4   hostname.domain.tld hostname # <-- Replace accordingly!
+#
+#    Finally restart the database service:
+#
+#    $ service mysql restart
+#
+# 3. If the database service cannot restart even after the first 2 steps, make sure the database data folder
+#    (common for either MySQL or MariaDB) "/var/lib/mysql" is owned by the "mysql" user AND group.
+#    Additionally, the folder itself can have 0751 or 0755 file permissions. To fix it, simply do this:
+#    $ chown -R mysql:mysql /var/lib/mysql
+#    $ chmod 0755 /var/lib/mysql
+#
+#    Finally restart the database service:
+#
+#    $ service mysql restart
+#
+#
+# ~ FIN ~
 
-# This will be passed to all mysql clients
-# It has been reported that passwords should be enclosed with ticks/quotes
-# escpecially if they contain "#" chars...
-# Remember to edit /etc/mysql/debian.cnf when changing the socket location.
-
-# Here is entries for some specific programs
-# The following values assume you have at least 32M ram
-
-[mysqld_safe]
-socket		= /var/run/mysqld/mysqld.sock
-nice		= 0
+[mysql]
+port                            = 3306
+socket                          = /var/run/mysqld/mysqld.sock
 
 [mysqld]
-#
-# * Basic Settings
-#
-user		= mysql
-pid-file	= /var/run/mysqld/mysqld.pid
-socket		= /var/run/mysqld/mysqld.sock
-port		= 3306
-basedir		= /usr
-datadir		= /var/lib/mysql
-tmpdir		= /tmp
-lc-messages-dir	= /usr/share/mysql
-skip-external-locking
-#
-# Instead of skip-networking the default is now to listen only on
-# localhost which is more compatible and is not less secure.
-#bind-address		= 127.0.0.1
-#
-# * Fine Tuning
-#
-key_buffer_size		= 16M
-max_allowed_packet	= 16M
-thread_stack		= 192K
-thread_cache_size       = 8
-# This replaces the startup script and checks MyISAM tables if needed
-# the first time they are touched
-myisam-recover-options  = BACKUP
-#max_connections        = 100
-#table_cache            = 64
-#thread_concurrency     = 10
-#
-# * Query Cache Configuration
-#
-query_cache_limit	= 1M
-query_cache_size        = 16M
-#
-# * Logging and Replication
-#
-# Both location gets rotated by the cronjob.
-# Be aware that this log type is a performance killer.
-# As of 5.1 you can enable the log at runtime!
-#general_log_file        = /var/log/mysql/mysql.log
-#general_log             = 1
-#
-# Error log - should be very few entries.
-#
-log_error = /var/log/mysql/error.log
-#
-# Here you can see queries with especially long duration
-#log_slow_queries	= /var/log/mysql/mysql-slow.log
-#long_query_time = 2
-#log-queries-not-using-indexes
-#
-# The following can be used as easy to replay backup logs or for replication.
-# note: if you are setting up a replication slave, see README.Debian about
-#       other settings you may need to change.
-#server-id		= 1
-#log_bin			= /var/log/mysql/mysql-bin.log
-expire_logs_days	= 10
-max_binlog_size   = 100M
-#binlog_do_db		= include_database_name
-#binlog_ignore_db	= include_database_name
-#
-# * InnoDB
-#
-# InnoDB is enabled by default with a 10MB datafile in /var/lib/mysql/.
-# Read the manual for more InnoDB related options. There are many!
-#
-# * Security Features
-#
-# Read the manual, too, if you want chroot!
-# chroot = /var/lib/mysql/
-#
-# For generating SSL certificates I recommend the OpenSSL GUI "tinyca".
-#
-# ssl-ca=/etc/mysql/cacert.pem
-# ssl-cert=/etc/mysql/server-cert.pem
-# ssl-key=/etc/mysql/server-key.pem
+# === Required Settings ===
+basedir                         = /usr
+bind_address                    = 127.0.0.1 # Change to 0.0.0.0 to allow remote connections
+datadir                         = /var/lib/mysql
+#default_authentication_plugin  = mysql_native_password # Enable in MySQL 8+ or MariaDB 10.6+ for backwards compatibility with common CMSs
+max_allowed_packet              = 256M
+max_connect_errors              = 1000000
+pid_file                        = /var/run/mysqld/mysqld.pid
+port                            = 3306
+skip_external_locking
+skip_name_resolve
+socket                          = /var/run/mysqld/mysqld.sock
+tmpdir                          = /tmp
+user                            = mysql
+
+# === SQL Compatibility Mode ===
+# Enable for b/c with databases created in older MySQL/MariaDB versions
+# (e.g. when using null dates)
+#sql_mode                       = ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION,ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES
+# Crappy SQL queries/schema? Go bold!
+#sql_mode                       = ""
+
+# === InnoDB Settings ===
+default_storage_engine          = InnoDB
+innodb_buffer_pool_instances    = 4     # Use 1 instance per 1GB of InnoDB pool size - max is 64
+innodb_buffer_pool_size         = 4G    # Use up to 70-80% of RAM
+innodb_file_per_table           = 1
+innodb_flush_log_at_trx_commit  = 0
+innodb_flush_method             = O_DIRECT
+innodb_log_buffer_size          = 16M
+innodb_log_file_size            = 1G
+innodb_sort_buffer_size         = 4M    # UPD - Defines how much data is read into memory for sorting operations before writing to disk (default is 1M / max is 64M)
+innodb_stats_on_metadata        = 0
+#innodb_use_fdatasync           = 1     # Only (!) for MySQL v8.0.26+
+
+#innodb_temp_data_file_path     = ibtmp1:64M:autoextend:max:20G # Control the maximum size for the ibtmp1 file
+#innodb_thread_concurrency      = 4     # Optional: Set to the number of CPUs on your system (minus 1 or 2) to better
+                                        # contain CPU usage. E.g. if your system has 8 CPUs, try 6 or 7 and check
+                                        # the overall load produced by MySQL/MariaDB.
+innodb_read_io_threads          = 64
+innodb_write_io_threads         = 64
+#innodb_io_capacity             = 2000  # Depends on the storage tech - use 2000 for SSD, more for NVMe
+#innodb_io_capacity_max         = 4000  # Usually double the value of innodb_io_capacity
+
+# === MyISAM Settings ===
+# The following 3 options are ONLY supported by MariaDB & up to MySQL 5.7
+# Do NOT un-comment on MySQL 8.x+
+#query_cache_limit              = 4M    # UPD
+#query_cache_size               = 64M   # UPD
+#query_cache_type               = 1     # Enabled by default
+
+key_buffer_size                 = 24M   # UPD
+
+low_priority_updates            = 1
+concurrent_insert               = 2
+
+# === Connection Settings ===
+max_connections                 = 100   # UPD - Important: high no. of connections = high RAM consumption
+
+back_log                        = 512
+thread_cache_size               = 100
+thread_stack                    = 192K
+
+interactive_timeout             = 180
+wait_timeout                    = 180
+
+# For MySQL 5.7+ only (disabled by default)
+#max_execution_time             = 90000 # Set a timeout limit for SELECT statements (value in milliseconds).
+                                        # This option may be useful to address aggressive crawling on large sites,
+                                        # but it can also cause issues (e.g. with backups). So use with extreme caution and test!
+                                        # More info at: https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_max_execution_time
+
+# For MariaDB 10.1.1+ only (disabled by default)
+#max_statement_time             = 90    # The equivalent of "max_execution_time" in MySQL 5.7+ (set above)
+                                        # The variable is of type double, thus you can use subsecond timeout.
+                                        # For example you can use value 0.01 for 10 milliseconds timeout.
+                                        # More info at: https://mariadb.com/kb/en/aborting-statements/
+
+# === Buffer Settings ===
+# Handy tip for managing your database's RAM usage:
+# The following values should be treated carefully as they are added together and then multiplied by your "max_connections" value.
+# Other options will also add up to RAM consumption (e.g. tmp_table_size). So don't go switching your "join_buffer_size" to 1G, it's harmful & inefficient.
+# Use one of the database diagnostics tools mentioned at the top of this file to count your database's potential total RAM usage, so you know if you are within
+# reasonable limits. Remember that other services will require enough RAM to operate properly (like Apache or PHP-FPM), so set your limits wisely.
+join_buffer_size                = 4M    # UPD
+read_buffer_size                = 3M    # UPD
+read_rnd_buffer_size            = 4M    # UPD
+sort_buffer_size                = 4M    # UPD
+
+# === Table Settings ===
+# In systemd managed systems like Ubuntu 16.04+ or CentOS 7+, you need to perform an extra action for table_open_cache & open_files_limit
+# to be overriden (also see comment next to open_files_limit).
+# E.g. for MySQL 5.7, please check: https://dev.mysql.com/doc/refman/5.7/en/using-systemd.html
+# and for MariaDB check: https://mariadb.com/kb/en/library/systemd/
+table_definition_cache          = 40000 # UPD
+table_open_cache                = 40000 # UPD
+open_files_limit                = 60000 # UPD - This can be 2x to 3x the table_open_cache value or match the system's
+                                        # open files limit usually set in /etc/sysctl.conf and /etc/security/limits.conf
+                                        # In systemd managed systems this limit must also be set in:
+                                        # - /etc/systemd/system/mysql.service.d/override.conf (for MySQL 5.7+ in Ubuntu) or
+                                        # - /etc/systemd/system/mysqld.service.d/override.conf (for MySQL 5.7+ in CentOS) or
+                                        # - /etc/systemd/system/mariadb.service.d/override.conf (for MariaDB)
+                                        # otherwise changing open_files_limit will have no effect.
+                                        #
+                                        # To edit the right file execute:
+                                        # $ systemctl edit mysql (or mysqld or mariadb)
+                                        # and set "LimitNOFILE=" to something like 100000 or more (depending on your system limits for MySQL)
+                                        # or use "LimitNOFILE=infinity" for MariaDB only.
+                                        # Finally merge the changes with:
+                                        # $ systemctl daemon-reload; systemctl restart mysql (or mysqld or mariadb)
+
+max_heap_table_size             = 128M  # Increase to 256M or 512M if you have lots of temporary tables because of missing indices in JOINs
+tmp_table_size                  = 128M  # Use same value as max_heap_table_size
+
+# === Search Settings ===
+ft_min_word_len                 = 3     # Minimum length of words to be indexed for search results
+
+# === Binary Logging ===
+disable_log_bin                 = 1     # Binary logging disabled by default
+#log_bin                                # To enable binary logging, uncomment this line & only one of the following 2 lines
+                                        # that corresponds to your actual MySQL/MariaDB version.
+                                        # Remember to comment out the line with "disable_log_bin".
+#expire_logs_days               = 1     # Keep logs for 1 day - For MySQL 5.x & MariaDB before 10.6 only
+#binlog_expire_logs_seconds     = 86400 # Keep logs for 1 day (in seconds) - For MySQL 8+ & MariaDB 10.6+ only
+
+# === Error & Slow Query Logging ===
+log_error                       = /var/lib/mysql/mysql_error.log
+log_queries_not_using_indexes   = 0     # Disabled on production
+long_query_time                 = 5
+slow_query_log                  = 0     # Disabled on production
+slow_query_log_file             = /var/lib/mysql/mysql_slow.log
+
+[mysqldump]
+# Variable reference
+# For MySQL 5.7+:  https://dev.mysql.com/doc/refman/5.7/en/mysqldump.html
+# For MariaDB:     https://mariadb.com/kb/en/library/mysqldump/
+quick
+quote_names
+max_allowed_packet              = 1024M
