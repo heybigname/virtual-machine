@@ -6,11 +6,6 @@
 
 - name: Redis | Install Redis
   apt: pkg=redis state=latest force=yes
-  when: ansible_distribution == 'Ubuntu' and ansible_distribution_release == 'bionic' or ansible_distribution_release == 'focal'
-
-- name: Redis | Install Redis
-  apt: pkg=redis-server state=latest force=yes
-  when: ansible_distribution == 'Ubuntu' and ansible_distribution_release == 'xenial'
 
 - name: Redis | Enable with Systemd
   systemd:
