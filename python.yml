@@ -1,0 +1,7 @@
+- name: Python | Install pip
+  apt:
+    name: python3-pip
+
+- name: Python | Install Python Pygments Library
+  ansible.builtin.pip:
+    name: pygments

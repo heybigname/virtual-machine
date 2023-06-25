@@ -60,9 +60,6 @@ export LC_ALL="en_US.UTF-8"
 alias gs="git status -s"
 export PROMPT_EOL_MARK=''
 
-# small git tweak for lazygit
-export GIT_DISCOVERY_ACROSS_FILESYSTEM=1
-
 alias ls='lsd'
 alias l='ls --group-dirs first'
 alias ll='ls --group-dirs first --blocks permission,user,group,size,name -l --no-symlink'
@@ -70,7 +67,6 @@ alias la='ls -a'
 alias lla='ls -la'
 alias lt='ls --tree'
 
-alias az="lazygit"
 alias -s php="php"
 
 test() {

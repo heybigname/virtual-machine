@@ -27,7 +27,6 @@
     swap_size_in_mb: 1024
     install_rabbit_mq: "no"
     install_smenu: "no"
-    install_lazygit: "no"
     boost_pam_limits: "no"
     boosted_pam_limit: "40000"
   tasks:
@@ -56,8 +55,7 @@
       when: install_rabbit_mq == "yes"
     - include: tasks/smenu.yml
       when: install_smenu == "yes"
-    - include: tasks/lazygit.yml
-      when: install_lazygit == "yes"
+    - include: tasks/python.yml
   handlers:
     - name: restart php-fpm
       service: name=php{{ php_version }}-fpm state=restarted

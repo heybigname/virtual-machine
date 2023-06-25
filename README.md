@@ -5,7 +5,7 @@ This virtual machine configuration is designed to have ONE application per machi
 
 Ansible does not run on Windows but this configuration installs and runs it within the client machine instead of the Windows host so it is now Windows compatible.
 
-- [Ubuntu](http://www.ubuntu.com/) _(tested 16.04 and 18.04, configurable)_ 
+- [Ubuntu](http://www.ubuntu.com/) _(tested 22.04, configurable)_ 
 - [NGINX](http://nginx.org/) + [PHP7-FPM](http://php-fpm.org/) _(optional)_
 - [PHP](http://php.net/) _(optional)_
 - [NodeJS](http://nodejs.org/) _(optional)_
@@ -16,7 +16,6 @@ Ansible does not run on Windows but this configuration installs and runs it with
 - [RabbitMQ](https://www.rabbitmq.com/) _(optional)_
 - [Supervisord](http://supervisord.org/)
 - [Smenu](https://github.com/p-gen/smenu)
-- [Lazygit](https://github.com/p-gen/smenu)
 
 - site configuration defined in [vm_config.json](https://github.com/heybigname/virtual-machine/blob/master/vm_config.json)
 - custom NGINX site configuration is optional
@@ -51,7 +50,7 @@ dbuser: "root"
 dbpasswd: "password"
 databases: []
 sites: []
-php_version: "7.4"
+php_version: "8.1"
 php_modules: ['php{{ php_version }}-mysql', 'php{{ php_version }}-gd', 'php-apcu', 'php{{ php_version }}-curl', 'php{{ php_version }}-intl', 'php-memcached', 'php{{ php_version }}-mbstring', 'php{{ php_version }}-xml', 'php{{ php_version }}-pgsql', 'php{{ php_version }}-dev']
 install_db: "no"
 install_nginx: "no"
@@ -71,7 +70,6 @@ enable_swap: "yes"
 swap_size_in_mb: 1024
 install_rabbit_mq: "no"
 install_smenu: "no"
-install_lazygit: "no"
 boost_pam_limits: "no"
 ```
 
@@ -111,13 +109,18 @@ boost_pam_limits: "no"
   "enable_swap": "yes",
   "swap_size_in_mb": "1024",
   "install_smenu": "yes",
-  "install_lazygit": "yes",
   "boost_pam_limits": "no"
   "boosted_pam_limit": "40000"
 ```
 
 Changelog
 =========
+
+**9.2**
+
+- Add python
+- Upgrade to default Ubuntu 22.04
+- Remove lazygit
 
 **6.2**
 
