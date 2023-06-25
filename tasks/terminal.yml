@@ -3,7 +3,7 @@
 
 - name: Terminal | Install oh-my-zsh
   apt:
-    name: ['git', 'zsh', 'git-core']
+    name: ['git', 'zsh']
     state: latest
     update_cache: yes
 
