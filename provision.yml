@@ -30,32 +30,32 @@
     boost_pam_limits: "no"
     boosted_pam_limit: "40000"
   tasks:
-    - include: tasks/system.yml
-    - include: tasks/swap.yml
+    - import_tasks: tasks/system.yml
+    - import_tasks: tasks/swap.yml
       when: enable_swap == "yes"
-    - include: tasks/terminal.yml
-    - include: tasks/redis.yml
+    - import_tasks: tasks/terminal.yml
+    - import_tasks: tasks/redis.yml
       when: install_redis == "yes"
-    - include: tasks/mysql.yml
+    - import_tasks: tasks/mysql.yml
       when: install_db == "yes"
-    - include: tasks/nginx.yml
+    - import_tasks: tasks/nginx.yml
       when: install_nginx == "yes"
-    - include: tasks/php.yml
+    - import_tasks: tasks/php.yml
       when: install_php == "yes"
-    - include: tasks/php-fpm.yml
+    - import_tasks: tasks/php-fpm.yml
       when: install_php == "yes"
-    - include: tasks/beanstalkd.yml
+    - import_tasks: tasks/beanstalkd.yml
       when: install_beanstalkd == "yes"
-    - include: tasks/nodejs.yml
+    - import_tasks: tasks/nodejs.yml
       when: install_javascript_build_system == "yes"
-    - include: tasks/ruby.yml
-    - include: tasks/postgresql.yml
+    - import_tasks: tasks/ruby.yml
+    - import_tasks: tasks/postgresql.yml
       when: install_postgresql == "yes"
-    - include: tasks/rabbitmq.yml
+    - import_tasks: tasks/rabbitmq.yml
       when: install_rabbit_mq == "yes"
-    - include: tasks/smenu.yml
+    - import_tasks: tasks/smenu.yml
       when: install_smenu == "yes"
-    - include: tasks/python.yml
+    - import_tasks: tasks/python.yml
   handlers:
     - name: restart php-fpm
       service: name=php{{ php_version }}-fpm state=restarted
